@@ -31,7 +31,17 @@ On Windows with PowerShell script execution disabled, use `npm.cmd` instead of `
 
 ## Domain and SEO
 
-The unique title, description and OpenGraph text are present. The page uses `noindex, nofollow` and `robots.txt` blocks crawling because no public hostname is confirmed. There is deliberately no placeholder canonical, `og:url`, sitemap or external social image. After a real domain is approved: add its canonical and `og:url`, change robots directives to permit indexing, and generate a sitemap with the confirmed absolute URL. Deployment/domain configuration is outside this initial build.
+The custom domain is `https://freeqr.othrys.be/`. What the repository ships for it:
+
+- `index.html` has a unique title, meta description, OpenGraph title, description and `og:type` (`website`), and `twitter:card` (`summary`).
+- Canonical: `<link rel="canonical" href="https://freeqr.othrys.be/">`.
+- `og:url`: `https://freeqr.othrys.be/`.
+- Robots meta: `index, follow`.
+- A `WebApplication` JSON-LD block with `url` `https://freeqr.othrys.be/`.
+- `public/robots.txt` allows all crawlers (`User-agent: *`, `Allow: /`) and points to `Sitemap: https://freeqr.othrys.be/sitemap.xml`.
+- `public/sitemap.xml` lists one URL, `https://freeqr.othrys.be/`, with no `lastmod`.
+
+There is no external social image. Files in `public/` are copied to the root of `dist/` unchanged. If the domain changes, update the canonical, `og:url`, JSON-LD `url`, the `robots.txt` sitemap line and the sitemap `loc` together. These files do not show whether the site is indexed; check that in Search Console.
 
 ## Manual functional QA
 
