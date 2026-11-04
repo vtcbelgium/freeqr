@@ -1,3 +1,4 @@
+// [HARVESTED TO OTHRYS-BLOCKS] target: blocks/qr/client-qr-engine/payload.ts | date: 2026-11-05 | status: HARVEST_RETAIN
 export type Security = 'WPA' | 'WEP' | 'nopass';
 export function escapeWifi(value: string): string {
   return value.replace(/[\\;:,"]/g, '\\$&');
