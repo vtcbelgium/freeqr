@@ -11,6 +11,8 @@ import {
   type QRType
 } from './payload';
 import { generateQR, type QROptions } from './qr';
+import { decodeQRFromFile, detectPayloadType } from './scanner';
+import { getPresetIconDataUrl } from './icons';
 import { showToast } from './toast';
 import { initI18n, getTranslations } from './i18n';
 import { initThemeController } from './theme';
@@ -32,13 +34,22 @@ const status = el('status');
 const error = el('error');
 const colorInput = el<HTMLInputElement>('qr-color-input');
 const eccSelect = el<HTMLSelectElement>('qr-ecc-select');
+const resolutionSelect = el<HTMLSelectElement>('qr-resolution-select');
+const frameTemplateSelect = el<HTMLSelectElement>('frame-template-select');
+const frameCustomInput = el<HTMLInputElement>('frame-custom-input');
+const logoFileInput = el<HTMLInputElement>('logo-file-input');
+const exportNoteText = el('export-note-text');
+const copyImageBtn = el<HTMLButtonElement>('copy-image');
 const printBtn = el<HTMLButtonElement>('print-btn');
-const actions = ['png', 'svg', 'copy', 'print-btn'].map(id => el<HTMLButtonElement>(id));
+const actions = ['png', 'svg', 'copy', 'print-btn', 'copy-image'].map(id => el<HTMLButtonElement>(id));
 
 let current: { svg: string; png: string; payload: string } | undefined;
 let revision = 0;
 let timer: ReturnType<typeof setTimeout>;
 let selectedColor = '#000000';
+let selectedLogo: string | undefined = undefined;
+let selectedFrameText: string | undefined = undefined;
+let selectedResolution = 1024;
 
 function getActiveMode(): QRType {
   return (document.querySelector<HTMLInputElement>('input[name="mode"]:checked')?.value as QRType) || 'url';
@@ -50,6 +61,8 @@ function switchMode(newMode: QRType) {
     const section = el(`${m}-fields`);
     if (section) section.hidden = (m !== newMode);
   });
+  const radio = document.querySelector<HTMLInputElement>(`input[name="mode"][value="${newMode}"]`);
+  if (radio) radio.checked = true;
   void update();
 }
 
@@ -142,10 +155,30 @@ async function update() {
     if (!payload) return;
 
     status.textContent = t.statusCreating;
-    const ecc = (eccSelect?.value as 'L' | 'M' | 'Q' | 'H') || 'M';
+    
+    // Determine effective frame text
+    let frameText = selectedFrameText;
+    if (frameTemplateSelect?.value === 'custom') {
+      frameText = frameCustomInput?.value.trim() || undefined;
+    }
+
+    // Determine error correction level
+    let ecc = (eccSelect?.value as 'L' | 'M' | 'Q' | 'H') || 'M';
+    if (selectedLogo || frameText) {
+      ecc = 'H'; // Guaranteed scan readability with center overlay
+    }
+
+    selectedResolution = parseInt(resolutionSelect?.value || '1024', 10);
+    if (exportNoteText) {
+      exportNoteText.textContent = `PNG · ${selectedResolution} px  /  SVG · scalable vector`;
+    }
+
     const qrOpts: Partial<QROptions> = {
       errorCorrectionLevel: ecc,
-      color: { dark: selectedColor, light: '#ffffff' }
+      width: selectedResolution,
+      color: { dark: selectedColor, light: '#ffffff' },
+      logo: selectedLogo,
+      frameText: frameText
     };
 
     const result = await generateQR(payload, qrOpts);
@@ -164,6 +197,33 @@ async function update() {
     status.textContent = 'Your code needs a little attention.';
   }
 }
+
+// Workspace Tab Switching (Create QR vs Reverse Scan QR)
+const tabCreate = el('tab-create');
+const tabScan = el('tab-scan');
+const generatorSection = el('generator');
+const scannerSection = el('scanner-section');
+
+function switchWorkspace(mode: 'create' | 'scan') {
+  if (mode === 'create') {
+    tabCreate.classList.add('active');
+    tabCreate.setAttribute('aria-selected', 'true');
+    tabScan.classList.remove('active');
+    tabScan.setAttribute('aria-selected', 'false');
+    generatorSection.hidden = false;
+    scannerSection.hidden = true;
+  } else {
+    tabScan.classList.add('active');
+    tabScan.setAttribute('aria-selected', 'true');
+    tabCreate.classList.remove('active');
+    tabCreate.setAttribute('aria-selected', 'false');
+    generatorSection.hidden = true;
+    scannerSection.hidden = false;
+  }
+}
+
+tabCreate?.addEventListener('click', () => switchWorkspace('create'));
+tabScan?.addEventListener('click', () => switchWorkspace('scan'));
 
 // Mode change listener
 document.querySelectorAll<HTMLInputElement>('input[name="mode"]').forEach(radio => {
@@ -189,6 +249,59 @@ colorInput?.addEventListener('input', (e) => {
   void update();
 });
 
+// Center Logo Overlay Listeners
+document.querySelectorAll<HTMLButtonElement>('.icon-preset-pill').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.icon-preset-pill').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const iconKey = btn.getAttribute('data-icon');
+    if (!iconKey || iconKey === 'none') {
+      selectedLogo = undefined;
+    } else {
+      selectedLogo = getPresetIconDataUrl(iconKey, selectedColor);
+    }
+    void update();
+  });
+});
+
+logoFileInput?.addEventListener('change', () => {
+  const file = logoFileInput.files?.[0];
+  if (!file) return;
+  if (file.size > 800_000) {
+    showToast('Logo file too large. Please use an image under 800KB.');
+    return;
+  }
+  const reader = new FileReader();
+  reader.onload = () => {
+    selectedLogo = reader.result as string;
+    document.querySelectorAll('.icon-preset-pill').forEach(b => b.classList.remove('active'));
+    showToast('Custom logo applied to center badge.');
+    void update();
+  };
+  reader.readAsDataURL(file);
+});
+
+// Frame & Caption Template Listeners
+frameTemplateSelect?.addEventListener('change', () => {
+  const val = frameTemplateSelect.value;
+  if (val === 'custom') {
+    frameCustomInput.hidden = false;
+    frameCustomInput.focus();
+    selectedFrameText = frameCustomInput.value.trim() || undefined;
+  } else {
+    frameCustomInput.hidden = true;
+    selectedFrameText = val ? val : undefined;
+  }
+  void update();
+});
+
+frameCustomInput?.addEventListener('input', () => {
+  selectedFrameText = frameCustomInput.value.trim() || undefined;
+  void update();
+});
+
+// Resolution & Error Correction Listeners
+resolutionSelect?.addEventListener('change', () => void update());
 eccSelect?.addEventListener('change', () => void update());
 
 // Geo preset buttons
@@ -247,6 +360,13 @@ el('clear').addEventListener('click', () => {
   el<HTMLInputElement>('vcard-url').value = '';
   el<HTMLInputElement>('geo-lat').value = '';
   el<HTMLInputElement>('geo-lng').value = '';
+  selectedLogo = undefined;
+  document.querySelectorAll('.icon-preset-pill').forEach(b => b.classList.remove('active'));
+  document.querySelector('.icon-preset-pill[data-icon="none"]')?.classList.add('active');
+  frameTemplateSelect.value = '';
+  frameCustomInput.hidden = true;
+  frameCustomInput.value = '';
+  selectedFrameText = undefined;
   void update();
   showToast('Input cleared.');
 });
@@ -258,16 +378,42 @@ function download(format: 'png' | 'svg') {
   const url = blob ? URL.createObjectURL(blob) : current.png;
   const anchor = document.createElement('a');
   anchor.href = url;
-  anchor.download = `freeqr-${getActiveMode()}.${format}`;
+  anchor.download = `freeqr-${getActiveMode()}-${selectedResolution}px.${format}`;
   document.body.append(anchor);
   anchor.click();
   anchor.remove();
   if (blob) setTimeout(() => URL.revokeObjectURL(url), 1000);
-  showToast(`Downloaded QR code as ${format.toUpperCase()}`);
+  showToast(`Downloaded ${selectedResolution}px QR code as ${format.toUpperCase()}`);
 }
 
 el('png').addEventListener('click', () => download('png'));
 el('svg').addEventListener('click', () => download('svg'));
+
+// Copy Image Directly to Clipboard (Feature 1)
+copyImageBtn?.addEventListener('click', async () => {
+  if (!current?.png) return;
+  try {
+    const res = await fetch(current.png);
+    const blob = await res.blob();
+    if (navigator.clipboard && typeof ClipboardItem !== 'undefined') {
+      await navigator.clipboard.write([
+        new ClipboardItem({ 'image/png': blob })
+      ]);
+      showToast('QR code image copied! Paste directly into Figma, Canva, or Slack.');
+      return;
+    }
+    throw new Error('ClipboardItem unsupported');
+  } catch {
+    try {
+      await navigator.clipboard.writeText(current.payload);
+      showToast('Image clipboard unsupported in this browser — payload copied instead.');
+    } catch {
+      showToast('Unable to access clipboard.');
+    }
+  }
+});
+
+// Copy payload text
 el('copy').addEventListener('click', async () => {
   if (!current) return;
   try {
@@ -314,6 +460,136 @@ printBtn?.addEventListener('click', () => {
     </html>
   `);
   printWindow.document.close();
+});
+
+// REVERSE QR SCANNER IMPLEMENTATION
+const scannerDropzone = el('scanner-dropzone');
+const scannerFileInput = el<HTMLInputElement>('scanner-file-input');
+const scannerResult = el('scanner-result');
+const scannerResultType = el('scanner-result-type');
+const scannerResultPayload = el<HTMLTextAreaElement>('scanner-result-payload');
+const scannerOpenUrl = el<HTMLAnchorElement>('scanner-open-url');
+const scannerCopyBtn = el<HTMLButtonElement>('scanner-copy-btn');
+const scannerLoadGenerator = el<HTMLButtonElement>('scanner-load-generator');
+const scannerClearBtn = el<HTMLButtonElement>('scanner-clear-btn');
+const scannerError = el('scanner-error');
+
+let lastScanned: { payload: string; type: string } | undefined = undefined;
+
+async function handleScanFile(file: File | Blob) {
+  if (!file) return;
+  scannerError.textContent = '';
+  scannerResult.hidden = true;
+  showToast('Decoding QR code locally...');
+
+  try {
+    const res = await decodeQRFromFile(file);
+    lastScanned = res;
+    scannerResultType.textContent = res.summary.toUpperCase();
+    scannerResultPayload.value = res.payload;
+    scannerResult.hidden = false;
+
+    if (res.type === 'url') {
+      scannerOpenUrl.href = res.payload;
+      scannerOpenUrl.hidden = false;
+    } else {
+      scannerOpenUrl.hidden = true;
+    }
+    showToast('QR code decoded successfully!');
+  } catch (err) {
+    scannerError.textContent = err instanceof Error ? err.message : 'Failed to decode QR code.';
+    showToast('Could not find a valid QR code in this image.');
+  }
+}
+
+scannerDropzone?.addEventListener('click', () => {
+  scannerFileInput?.click();
+});
+
+scannerDropzone?.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter' || e.key === ' ') {
+    e.preventDefault();
+    scannerFileInput?.click();
+  }
+});
+
+scannerFileInput?.addEventListener('change', () => {
+  const file = scannerFileInput.files?.[0];
+  if (file) void handleScanFile(file);
+});
+
+// Drag & Drop
+scannerDropzone?.addEventListener('dragover', (e) => {
+  e.preventDefault();
+  scannerDropzone.classList.add('dragover');
+});
+
+scannerDropzone?.addEventListener('dragleave', () => {
+  scannerDropzone.classList.remove('dragover');
+});
+
+scannerDropzone?.addEventListener('drop', (e) => {
+  e.preventDefault();
+  scannerDropzone.classList.remove('dragover');
+  const file = e.dataTransfer?.files?.[0];
+  if (file) void handleScanFile(file);
+});
+
+// Global Paste event for screenshot pasting
+window.addEventListener('paste', (e) => {
+  if (scannerSection && !scannerSection.hidden) {
+    const items = e.clipboardData?.items;
+    if (items) {
+      for (let i = 0; i < items.length; i++) {
+        if (items[i].type.startsWith('image/')) {
+          const file = items[i].getAsFile();
+          if (file) {
+            void handleScanFile(file);
+            break;
+          }
+        }
+      }
+    }
+  }
+});
+
+scannerCopyBtn?.addEventListener('click', async () => {
+  if (!lastScanned) return;
+  try {
+    await navigator.clipboard.writeText(lastScanned.payload);
+    showToast('Decoded content copied to clipboard.');
+  } catch {
+    showToast('Unable to copy to clipboard.');
+  }
+});
+
+scannerClearBtn?.addEventListener('click', () => {
+  scannerResult.hidden = true;
+  scannerError.textContent = '';
+  if (scannerFileInput) scannerFileInput.value = '';
+  lastScanned = undefined;
+});
+
+// Load into Generator button
+scannerLoadGenerator?.addEventListener('click', () => {
+  if (!lastScanned) return;
+  const payload = lastScanned.payload;
+  const detected = detectPayloadType(payload);
+
+  switchWorkspace('create');
+  switchMode(detected.type as QRType);
+
+  if (detected.type === 'url') {
+    inputUrl.value = payload;
+  } else if (detected.type === 'text') {
+    text.value = payload;
+  } else {
+    text.value = payload;
+    switchMode('text');
+  }
+
+  showToast('Decoded data loaded into Generator!');
+  void update();
 });
 
 // Initialize sovereign subsystems

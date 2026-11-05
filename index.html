@@ -134,6 +134,21 @@
       </div>
       <h1 id="title" data-i18n="heroTitle">Free QR code generator</h1>
       <p data-i18n="heroDescription">Create a QR code for a website link, text, or Wi-Fi network. Download a PNG or SVG, with no account required.</p>
+
+      <!-- Silicon Valley Style Mode Switcher Tab Bar -->
+      <div class="workspace-tabs-container">
+        <div class="workspace-tabs" role="tablist" aria-label="FreeQR Studio Mode">
+          <button type="button" role="tab" id="tab-create" aria-selected="true" class="workspace-tab active" data-workspace="create">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"></rect><rect x="14" y="3" width="7" height="7" rx="1.5"></rect><rect x="14" y="14" width="7" height="7" rx="1.5"></rect><rect x="3" y="14" width="7" height="7" rx="1.5"></rect></svg>
+            <span>Create QR Code</span>
+          </button>
+          <button type="button" role="tab" id="tab-scan" aria-selected="false" class="workspace-tab" data-workspace="scan">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7V4h3"></path><path d="M17 4h3v3"></path><path d="M20 17v3h-3"></path><path d="M7 20H4v-3"></path><line x1="4" y1="12" x2="20" y2="12"></line></svg>
+            <span>Scan / Read QR</span>
+            <span class="pill-badge-new">REVERSE</span>
+          </button>
+        </div>
+      </div>
     </section>
 
     <!-- WORKSPACE GENERATOR SECTION -->
@@ -338,11 +353,12 @@
             <summary class="customizer-summary">
               <span class="summary-left">
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="m4.93 4.93 4.24 4.24"></path><path d="m14.83 9.17 4.24-4.24"></path><path d="m14.83 14.83 4.24 4.24"></path><path d="m9.17 14.83-4.24 4.24"></path><circle cx="12" cy="12" r="4"></circle></svg>
-                <span>Design &amp; Customization</span>
+                <span>Design, Center Logo &amp; Resolution</span>
               </span>
-              <span class="summary-tag">Color &amp; Quality</span>
+              <span class="summary-tag">Studio Controls</span>
             </summary>
             <div class="customizer-body">
+              <!-- Color Control -->
               <div class="customizer-row">
                 <label>Foreground Color</label>
                 <div class="color-palette">
@@ -357,13 +373,59 @@
                   </label>
                 </div>
               </div>
+
+              <!-- Center Logo / Icon Badge Overlay -->
               <div class="customizer-row">
-                <label for="qr-ecc-select">Error Correction (Scan Reliability)</label>
+                <label>Center Logo / Icon Overlay</label>
+                <div class="icon-preset-bar">
+                  <button type="button" class="icon-preset-pill active" data-icon="none">None</button>
+                  <button type="button" class="icon-preset-pill" data-icon="link" title="Link Icon">🔗 Link</button>
+                  <button type="button" class="icon-preset-pill" data-icon="wifi" title="Wi-Fi Icon">📶 Wi-Fi</button>
+                  <button type="button" class="icon-preset-pill" data-icon="email" title="Email Icon">✉️ Email</button>
+                  <button type="button" class="icon-preset-pill" data-icon="phone" title="Phone Icon">📱 Phone</button>
+                  <button type="button" class="icon-preset-pill" data-icon="contact" title="Contact Icon">📇 Contact</button>
+                  <button type="button" class="icon-preset-pill" data-icon="location" title="Location Pin">📍 Pin</button>
+                  <button type="button" class="icon-preset-pill" data-icon="star" title="Star Icon">⭐ Star</button>
+                  <label class="icon-upload-label" title="Upload custom logo PNG/SVG">
+                    <input type="file" id="logo-file-input" accept="image/png,image/jpeg,image/svg+xml" class="sr-only">
+                    <span>Upload Logo ⇪</span>
+                  </label>
+                </div>
+                <p class="customizer-hint">Adding an icon automatically elevates error recovery to High (30%) so your QR scans reliably.</p>
+              </div>
+
+              <!-- Frame / Caption Template -->
+              <div class="customizer-row">
+                <label for="frame-template-select">Print Frame &amp; Caption</label>
+                <div class="frame-row">
+                  <select id="frame-template-select">
+                    <option value="" selected>No Frame (Standard Code)</option>
+                    <option value="SCAN ME">"SCAN ME" Caption</option>
+                    <option value="CONNECT TO WI-FI">"CONNECT TO WI-FI" Caption</option>
+                    <option value="custom">Custom Caption...</option>
+                  </select>
+                  <input type="text" id="frame-custom-input" placeholder="e.g. FOLLOW US" maxlength="24" hidden>
+                </div>
+              </div>
+
+              <!-- Resolution Selector -->
+              <div class="customizer-row">
+                <label for="qr-resolution-select">Export Resolution</label>
+                <select id="qr-resolution-select">
+                  <option value="1024" selected>1024 × 1024 px (Standard · Digital &amp; Web)</option>
+                  <option value="2048">2048 × 2048 px (Print HD · Flyers &amp; Menus)</option>
+                  <option value="4096">4096 × 4096 px (Ultra HD · Posters &amp; Banners)</option>
+                </select>
+              </div>
+
+              <!-- Error Correction -->
+              <div class="customizer-row">
+                <label for="qr-ecc-select">Error Correction (Redundancy Level)</label>
                 <select id="qr-ecc-select">
                   <option value="M" selected>Medium (~15% recovery · Standard)</option>
                   <option value="L">Low (~7% recovery · Densest)</option>
                   <option value="Q">Quartile (~25% recovery · High)</option>
-                  <option value="H">High (~30% recovery · Best for print)</option>
+                  <option value="H">High (~30% recovery · Best for print &amp; logos)</option>
                 </select>
               </div>
             </div>
@@ -401,15 +463,110 @@
           </div>
         </div>
         <p id="status" role="status" aria-live="polite">Add some content to see your QR code.</p>
+        
+        <!-- Primary Action Download Group -->
         <div class="downloads">
           <button type="button" id="png" disabled><span data-i18n="btnPng">Download PNG</span> <span aria-hidden="true">↓</span></button>
           <button type="button" id="svg" disabled><span data-i18n="btnSvg">SVG</span> <span aria-hidden="true">↓</span></button>
+          <button type="button" id="copy-image" class="copy-image-btn" disabled title="Copy PNG image directly to clipboard for Figma, Canva, or Slack">Copy Image 📋</button>
         </div>
+
+        <!-- Secondary Actions -->
         <div class="preview-secondary-actions">
           <button type="button" id="copy" class="copy" disabled data-i18n="btnCopy">Copy payload</button>
           <button type="button" id="print-btn" class="print-btn" disabled title="Print QR Code directly">Print 🖨️</button>
         </div>
-        <p class="export-note">PNG · 1024 px &nbsp;/&nbsp; SVG · scalable vector</p>
+        <p class="export-note" id="export-note-text">PNG · 1024 px &nbsp;/&nbsp; SVG · scalable vector</p>
+
+        <!-- Sovereign Fleet / Sponsor Spotlight Card -->
+        <div class="fleet-sponsor-slot">
+          <div class="fleet-sponsor-badge">SOVEREIGN NETWORK</div>
+          <p class="fleet-sponsor-title">Built with OTHRYS Sovereign Architecture</p>
+          <p class="fleet-sponsor-desc">Zero telemetry, zero vendor lock-in. Permanent, fast, and private web tools.</p>
+          <div class="fleet-sponsor-links">
+            <a href="https://othrys.be" target="_blank" rel="noopener">Explore Hub ↗</a>
+            <a href="https://othrys.be/architecture" target="_blank" rel="noopener">Architecture Spec ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- REVERSE QR SCANNER WORKSPACE SECTION -->
+    <section class="scanner-section" id="scanner-section" hidden aria-label="QR code scanner and reader">
+      <div class="scanner-container">
+        <div class="step">
+          <span>01 / UPLOAD OR PASTE QR CODE</span>
+          <span class="step-badge">100% IN-BROWSER DECODER</span>
+        </div>
+        <h2>Scan &amp; Decode Any QR Code</h2>
+        <p class="scanner-desc">Drop any screenshot, flyer image, or photo of a QR code to read its content instantly on your desktop or laptop. Decoded entirely inside your browser sandbox.</p>
+        
+        <div class="scanner-dropzone" id="scanner-dropzone" tabindex="0" role="button" aria-label="Drop QR image here or click to browse">
+          <div class="dropzone-content">
+            <div class="dropzone-icon" aria-hidden="true">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 7V4h3"></path>
+                <path d="M17 4h3v3"></path>
+                <path d="M20 17v3h-3"></path>
+                <path d="M7 20H4v-3"></path>
+                <line x1="4" y1="12" x2="20" y2="12"></line>
+              </svg>
+            </div>
+            <p class="dropzone-main-text"><strong>Drag &amp; drop a QR image</strong> or <span class="browse-link">browse files</span></p>
+            <p class="dropzone-hint">Supports PNG, JPG, WEBP, or SVG · or paste directly with Ctrl+V / ⌘+V</p>
+          </div>
+          <input type="file" id="scanner-file-input" accept="image/*" class="sr-only">
+        </div>
+
+        <!-- Scanner Result Panel -->
+        <div id="scanner-result" class="scanner-result" hidden>
+          <div class="result-header">
+            <span class="result-badge" id="scanner-result-type">WEBSITE LINK</span>
+            <span class="result-verified">✓ Decoded Locally (0 Network Requests)</span>
+          </div>
+          <div class="result-body">
+            <label for="scanner-result-payload">Decoded Content:</label>
+            <textarea id="scanner-result-payload" readonly rows="3"></textarea>
+          </div>
+          <div class="result-actions">
+            <a id="scanner-open-url" href="#" target="_blank" rel="noopener noreferrer" class="btn-primary" hidden>Open Link ↗</a>
+            <button type="button" id="scanner-copy-btn" class="btn-secondary">Copy Content 📋</button>
+            <button type="button" id="scanner-load-generator" class="btn-secondary">Load into Generator ↻</button>
+            <button type="button" id="scanner-clear-btn" class="text-button">Scan Another Image</button>
+          </div>
+        </div>
+        <p id="scanner-error" class="error" role="alert"></p>
+      </div>
+    </section>
+
+    <!-- ANTI-SCAM CONSUMER ADVISORY SECTION -->
+    <section class="anti-scam-section" id="anti-scam" aria-labelledby="anti-scam-title">
+      <div class="anti-scam-card">
+        <div class="anti-scam-header">
+          <span class="anti-scam-pill">CONSUMER ADVISORY</span>
+          <h2 id="anti-scam-title">Beware the "Dynamic QR Code" Subscription Trap</h2>
+          <p class="anti-scam-subtitle">Commercial QR generators lure you into printing codes that secretly expire after 14 days, holding your menus and marketing hostage for €9.99 to €39/month.</p>
+        </div>
+        <div class="anti-scam-grid">
+          <div class="anti-scam-col scam-col">
+            <div class="col-badge bad">✕ THE PREDATORY COMMERCIAL TRAP</div>
+            <h3>Competitors (Dynamic QR)</h3>
+            <ul>
+              <li><strong>14-Day Hidden Expiry:</strong> Encodes their redirect URL (e.g., <code>qr-code.link/xyz</code>). Two weeks after printing your menus or flyers, visitors see a payment paywall.</li>
+              <li><strong>Hostage Subscriptions:</strong> You are forced to pay a recurring monthly fee forever, or reprint all your physical materials at massive expense.</li>
+              <li><strong>Tracking &amp; Surveillance:</strong> Every user scan is routed through corporate trackers that harvest device identifiers and IP addresses.</li>
+            </ul>
+          </div>
+          <div class="anti-scam-col safe-col">
+            <div class="col-badge good">✓ THE SOVEREIGN STANDARD</div>
+            <h3>FreeQR (Direct &amp; Permanent)</h3>
+            <ul>
+              <li><strong>100% Direct &amp; Static:</strong> Encodes your true URL, Wi-Fi password, or vCard straight into the visual pattern. No redirects.</li>
+              <li><strong>Permanent Forever:</strong> Your code will scan in 5, 20, or 50 years. It cannot expire, be cancelled, or held hostage.</li>
+              <li><strong>Zero Cloud Tracking:</strong> No intermediate servers, no cookies, no database. Computed 100% inside your local device sandbox.</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </section>
 

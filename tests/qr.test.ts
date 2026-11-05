@@ -12,6 +12,7 @@ import {
   geoPayload
 } from '../src/payload';
 import { generateQR } from '../src/qr';
+import { detectPayloadType } from '../src/scanner';
 
 describe('Payload Builders & Validators', () => {
   it('preserves text exactly and rejects empty or excessive UTF-8 content', () => {
@@ -156,5 +157,16 @@ describe('Optical QR Decoding & Scanner Verification (All 8 Types)', () => {
     expect(svg).toMatch(/<svg[^>]+viewBox="0 0 \d+ \d+"/);
     expect(svg).toContain('<path');
     expect(svg).toContain('stroke="#000000"');
+  });
+
+  it('detects payload types accurately in reverse scanner engine', () => {
+    expect(detectPayloadType('https://othrys.be').type).toBe('url');
+    expect(detectPayloadType('WIFI:T:WPA;S:HomeNet;P:pass;;').type).toBe('wifi');
+    expect(detectPayloadType('mailto:hello@othrys.be').type).toBe('email');
+    expect(detectPayloadType('tel:+1234567890').type).toBe('phone');
+    expect(detectPayloadType('smsto:+1234567890:Hi').type).toBe('sms');
+    expect(detectPayloadType('BEGIN:VCARD\nFN:Ada\nEND:VCARD').type).toBe('vcard');
+    expect(detectPayloadType('geo:50.85,4.35').type).toBe('location');
+    expect(detectPayloadType('Just some text').type).toBe('text');
   });
 });
