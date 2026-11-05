@@ -4,10 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Free QR Code Generator for Links, Text &amp; Wi-Fi | FreeQR</title>
-  <meta name="description" content="Make free static QR codes for website links, text and Wi-Fi. Create and download PNG or SVG QR codes directly in your browser, without an account.">
+  <meta name="description" content="Make free static QR codes for website links, text, Wi-Fi, email, phone, SMS, vCard contacts and location. Create and download PNG or SVG QR codes directly in your browser, without an account.">
   <meta name="robots" content="index, follow">
   <meta property="og:title" content="Free QR Code Generator for Links, Text &amp; Wi-Fi | FreeQR">
-  <meta property="og:description" content="Make free static QR codes for website links, text and Wi-Fi. Create and download PNG or SVG QR codes directly in your browser, without an account.">
+  <meta property="og:description" content="Make free static QR codes for website links, text, Wi-Fi, email, phone, SMS, vCard contacts and location. Create and download PNG or SVG QR codes directly in your browser, without an account.">
   <meta property="og:type" content="website">
   <meta name="theme-color" content="#000000">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -50,7 +50,7 @@
       "@type": "WebApplication",
       "name": "FreeQR",
       "url": "https://freeqr.othrys.be/",
-      "description": "Make free static QR codes for website links, text and Wi-Fi. Create and download PNG or SVG QR codes directly in your browser, without an account.",
+      "description": "Make free static QR codes for website links, text, Wi-Fi, email, SMS, phone, vCard, and location. Create and download PNG or SVG QR codes directly in your browser, without an account.",
       "applicationCategory": "UtilitiesApplication",
       "operatingSystem": "Any",
       "isAccessibleForFree": true
@@ -99,59 +99,28 @@
 <body>
   <a class="skip" href="#generator">Skip to generator</a>
   
-  <!-- SOVEREIGN HEADER BLOCK -->
+  <!-- SOVEREIGN HEADER BLOCK: CLEAN & MINIMAL (SILICON VALLEY STANDARD) -->
   <header class="site-header">
     <div class="header-left">
       <a class="brand othrys-brand" href="./" aria-label="FreeQR home">
-        <span class="brand-logo-mark" aria-hidden="true">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="3" y="3" width="7" height="7" rx="1.5"></rect>
-            <rect x="14" y="3" width="7" height="7" rx="1.5"></rect>
-            <rect x="14" y="14" width="7" height="7" rx="1.5"></rect>
-            <rect x="3" y="14" width="7" height="7" rx="1.5"></rect>
-          </svg>
-        </span>
-        <span class="brand-main">Free<strong>QR</strong></span>
-        <span class="sovereign-status-badge" title="No registration, tracking, or cloud backend required">Sovereign</span>
+        <div class="brand-row">
+          <span class="brand-logo-mark" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="7" height="7" rx="1.5"></rect>
+              <rect x="14" y="3" width="7" height="7" rx="1.5"></rect>
+              <rect x="14" y="14" width="7" height="7" rx="1.5"></rect>
+              <rect x="3" y="14" width="7" height="7" rx="1.5"></rect>
+            </svg>
+          </span>
+          <span class="brand-main">Free<strong>QR</strong></span>
+          <span class="sovereign-status-badge" title="No registration, tracking, or cloud backend required">Sovereign</span>
+        </div>
+        <small class="brand-signature">powered by OTHRYS</small>
       </a>
     </div>
-    
-    <nav class="site-nav" aria-label="Main Navigation">
-      <a href="#generator" data-i18n="navGenerator">Generator</a>
-      <a href="#how-it-works" data-i18n="navHowItWorks">How it works</a>
-      <a href="#privacy" data-i18n="navPrivacy">Privacy &amp; Legal</a>
-      <a href="#questions" data-i18n="navFaq">FAQ</a>
-      <button type="button" class="nav-link-btn" id="nav-about-btn" data-i18n="navAbout">About</button>
-    </nav>
 
     <div class="header-actions">
-      <!-- Cookie Inspector Pill (clean, no emoji clutter) -->
-      <button type="button" id="cookie-status-pill" class="header-pill cookie-pill" title="Inspect zero-cookie status" aria-label="Cookie and Privacy Status">
-        <span class="dot-indicator" aria-hidden="true"></span>
-        <span data-i18n="cookieBadge">0 Cookies</span>
-      </button>
-
-      <!-- Sovereign Account / Storage Vault Pill -->
-      <button type="button" id="vault-pill" class="header-pill vault-pill" title="Client-Side Storage Vault" aria-label="Open Storage Vault">
-        <span data-i18n="navAccount">Vault</span>
-      </button>
-
-      <!-- Language Switcher -->
-      <select id="lang-select" class="lang-select" aria-label="Select language" title="Select language">
-        <option value="en">EN</option>
-        <option value="nl">NL</option>
-        <option value="fr">FR</option>
-        <option value="de">DE</option>
-        <option value="es">ES</option>
-      </select>
-
       <a href="https://othrys.be/architecture" target="_blank" rel="noopener noreferrer" class="nav-fleet-pill" title="View Sovereign Fleet Telemetry">Fleet ↗</a>
-
-      <!-- Settings Cog Button -->
-      <button type="button" id="nav-settings-btn" class="icon-toggle-btn" title="Display & Accessibility Settings" aria-label="Settings">
-        ⚙
-      </button>
-
       <!-- Theme Toggle Button -->
       <button type="button" id="theme-toggle" class="icon-toggle-btn" aria-label="Toggle dark/light theme" title="Toggle theme">◐</button>
     </div>
@@ -175,23 +144,92 @@
           <span class="step-badge">LOCAL GENERATION</span>
         </div>
         <h2>Create your QR code</h2>
+        
         <form id="qr-form" novalidate>
+          <!-- Silicon Valley Style Mode Switcher Tab Bar -->
           <fieldset class="mode">
-            <legend class="sr-only">QR code type</legend>
-            <label class="mode-tab">
-              <input type="radio" name="mode" value="text" checked>
-              <span class="mode-label" data-i18n="modeText">↗ Text or URL</span>
+            <legend class="sr-only">QR code content type</legend>
+            
+            <label class="mode-tab" title="Website URL">
+              <input type="radio" name="mode" value="url" checked>
+              <span class="mode-label">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+                <span>URL</span>
+              </span>
             </label>
-            <label class="mode-tab">
+
+            <label class="mode-tab" title="Plain Text">
+              <input type="radio" name="mode" value="text">
+              <span class="mode-label" data-i18n="modeText">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 7 4 4 20 4 20 7"></polyline><line x1="9" y1="20" x2="15" y2="20"></line><line x1="12" y1="4" x2="12" y2="20"></line></svg>
+                <span>Text</span>
+              </span>
+            </label>
+
+            <label class="mode-tab" title="Wi-Fi Network Credentials">
               <input type="radio" name="mode" value="wifi">
-              <span class="mode-label" data-i18n="modeWifi">⌁ Wi-Fi network</span>
+              <span class="mode-label" data-i18n="modeWifi">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"></path><path d="M1.42 9a16 16 0 0 1 21.16 0"></path><path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path><line x1="12" y1="20" x2="12.01" y2="20"></line></svg>
+                <span>Wi-Fi</span>
+              </span>
+            </label>
+
+            <label class="mode-tab" title="Send Email">
+              <input type="radio" name="mode" value="email">
+              <span class="mode-label">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                <span>Email</span>
+              </span>
+            </label>
+
+            <label class="mode-tab" title="Phone Call">
+              <input type="radio" name="mode" value="phone">
+              <span class="mode-label">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                <span>Phone</span>
+              </span>
+            </label>
+
+            <label class="mode-tab" title="Send SMS Text">
+              <input type="radio" name="mode" value="sms">
+              <span class="mode-label">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                <span>SMS</span>
+              </span>
+            </label>
+
+            <label class="mode-tab" title="vCard Contact Card">
+              <input type="radio" name="mode" value="vcard">
+              <span class="mode-label">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                <span>vCard</span>
+              </span>
+            </label>
+
+            <label class="mode-tab" title="Geographic Location">
+              <input type="radio" name="mode" value="location">
+              <span class="mode-label">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                <span>Location</span>
+              </span>
             </label>
           </fieldset>
-          <div id="text-fields">
-            <label for="payload" data-i18n="labelPayload">Your text or link</label>
-            <textarea id="payload" rows="4" placeholder="https://your-next-great-idea.com" data-i18n-placeholder="placeholderPayload" aria-describedby="text-help error"></textarea>
+
+          <!-- MODE 1: URL -->
+          <div id="url-fields">
+            <label for="input-url">Website URL or Link</label>
+            <input id="input-url" type="url" placeholder="https://your-next-great-idea.com" autocomplete="off" aria-describedby="url-help error">
+            <p class="help" id="url-help">Enter any website link. Phone cameras open this URL with a single tap.</p>
+          </div>
+
+          <!-- MODE 2: PLAIN TEXT -->
+          <div id="text-fields" hidden>
+            <label for="payload" data-i18n="labelPayload">Your text or message</label>
+            <textarea id="payload" rows="4" placeholder="Enter any text, note, or raw code..." data-i18n-placeholder="placeholderPayload" aria-describedby="text-help error"></textarea>
             <p class="help" id="text-help" data-i18n="helpPayload">For a website, include https:// so phones can open it as a link. Up to 1,000 UTF-8 bytes (some characters use more than one).</p>
           </div>
+
+          <!-- MODE 3: WI-FI NETWORK -->
           <div id="wifi-fields" hidden>
             <label for="ssid" data-i18n="labelSsid">Network name (SSID)</label>
             <input id="ssid" autocomplete="off" aria-describedby="wifi-help error">
@@ -210,7 +248,129 @@
             </label>
             <p class="help" id="wifi-help" data-i18n="helpWifi">SSIDs and passwords stay in your browser. Anyone with this code can read the credentials. Device support varies.</p>
           </div>
+
+          <!-- MODE 4: EMAIL -->
+          <div id="email-fields" hidden>
+            <label for="input-email-to">Recipient Email Address</label>
+            <input id="input-email-to" type="email" placeholder="hello@company.com" autocomplete="off">
+            <label for="input-email-subject">Subject (optional)</label>
+            <input id="input-email-subject" type="text" placeholder="Inquiry about..." autocomplete="off">
+            <label for="input-email-body">Pre-filled Message (optional)</label>
+            <textarea id="input-email-body" rows="3" placeholder="Write your message here..."></textarea>
+            <p class="help">Scanners launch default mail client with recipient, subject, and body prefilled.</p>
+          </div>
+
+          <!-- MODE 5: PHONE -->
+          <div id="phone-fields" hidden>
+            <label for="input-phone-num">Phone Number</label>
+            <input id="input-phone-num" type="tel" placeholder="+32 470 12 34 56" autocomplete="off">
+            <p class="help">Scanning initiates a direct dial call on iOS and Android phones.</p>
+          </div>
+
+          <!-- MODE 6: SMS -->
+          <div id="sms-fields" hidden>
+            <label for="input-sms-num">Mobile Number</label>
+            <input id="input-sms-num" type="tel" placeholder="+1 (555) 019-2834" autocomplete="off">
+            <label for="input-sms-msg">Pre-filled SMS Text (optional)</label>
+            <textarea id="input-sms-msg" rows="3" placeholder="Hello, I would like to reserve..."></textarea>
+            <p class="help">Scanners launch the messaging app with number and draft text ready to send.</p>
+          </div>
+
+          <!-- MODE 7: VCARD CONTACT -->
+          <div id="vcard-fields" hidden>
+            <div class="input-grid-2">
+              <div>
+                <label for="vcard-first">First Name</label>
+                <input id="vcard-first" type="text" placeholder="Ada">
+              </div>
+              <div>
+                <label for="vcard-last">Last Name</label>
+                <input id="vcard-last" type="text" placeholder="Lovelace">
+              </div>
+            </div>
+            <div class="input-grid-2">
+              <div>
+                <label for="vcard-org">Organization / Company</label>
+                <input id="vcard-org" type="text" placeholder="Foundry Ltd">
+              </div>
+              <div>
+                <label for="vcard-phone">Mobile Phone</label>
+                <input id="vcard-phone" type="tel" placeholder="+1 555 0192">
+              </div>
+            </div>
+            <div class="input-grid-2">
+              <div>
+                <label for="vcard-email">Work Email</label>
+                <input id="vcard-email" type="email" placeholder="ada@foundry.com">
+              </div>
+              <div>
+                <label for="vcard-url">Website</label>
+                <input id="vcard-url" type="url" placeholder="https://foundry.com">
+              </div>
+            </div>
+            <p class="help">Scanning prompts smartphones to save a contact card directly into address book.</p>
+          </div>
+
+          <!-- MODE 8: LOCATION -->
+          <div id="location-fields" hidden>
+            <div class="input-grid-2">
+              <div>
+                <label for="geo-lat">Latitude</label>
+                <input id="geo-lat" type="text" placeholder="50.8503">
+              </div>
+              <div>
+                <label for="geo-lng">Longitude</label>
+                <input id="geo-lng" type="text" placeholder="4.3517">
+              </div>
+            </div>
+            <div class="geo-presets">
+              <span class="geo-presets-label">Quick Presets:</span>
+              <button type="button" class="geo-pill" data-lat="50.8503" data-lng="4.3517">Brussels</button>
+              <button type="button" class="geo-pill" data-lat="51.5074" data-lng="-0.1278">London</button>
+              <button type="button" class="geo-pill" data-lat="40.7128" data-lng="-74.0060">New York</button>
+              <button type="button" class="geo-pill" data-lat="35.6762" data-lng="139.6503">Tokyo</button>
+            </div>
+            <p class="help">Opens Google Maps or Apple Maps directly at specified geographic coordinates.</p>
+          </div>
+
+          <!-- DESIGN & STYLING CUSTOMIZER ACCORDION -->
+          <details class="customizer-accordion" id="customizer-details">
+            <summary class="customizer-summary">
+              <span class="summary-left">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="m4.93 4.93 4.24 4.24"></path><path d="m14.83 9.17 4.24-4.24"></path><path d="m14.83 14.83 4.24 4.24"></path><path d="m9.17 14.83-4.24 4.24"></path><circle cx="12" cy="12" r="4"></circle></svg>
+                <span>Design &amp; Customization</span>
+              </span>
+              <span class="summary-tag">Color &amp; Quality</span>
+            </summary>
+            <div class="customizer-body">
+              <div class="customizer-row">
+                <label>Foreground Color</label>
+                <div class="color-palette">
+                  <button type="button" class="color-swatch active" data-color="#000000" style="background: #000000;" title="Jet Black"></button>
+                  <button type="button" class="color-swatch" data-color="#0f172a" style="background: #0f172a;" title="Slate Navy"></button>
+                  <button type="button" class="color-swatch" data-color="#15803d" style="background: #15803d;" title="Sovereign Emerald"></button>
+                  <button type="button" class="color-swatch" data-color="#1d4ed8" style="background: #1d4ed8;" title="Royal Blue"></button>
+                  <button type="button" class="color-swatch" data-color="#6b21a8" style="background: #6b21a8;" title="Deep Purple"></button>
+                  <label class="custom-color-label" title="Custom Hex Color">
+                    <input type="color" id="qr-color-input" value="#000000">
+                    <span>Custom</span>
+                  </label>
+                </div>
+              </div>
+              <div class="customizer-row">
+                <label for="qr-ecc-select">Error Correction (Scan Reliability)</label>
+                <select id="qr-ecc-select">
+                  <option value="M" selected>Medium (~15% recovery · Standard)</option>
+                  <option value="L">Low (~7% recovery · Densest)</option>
+                  <option value="Q">Quartile (~25% recovery · High)</option>
+                  <option value="H">High (~30% recovery · Best for print)</option>
+                </select>
+              </div>
+            </div>
+          </details>
+
           <p id="error" class="error" role="alert"></p>
+          
           <div class="editor-bottom">
             <span class="live-status"><span class="pulse-dot"></span> Updates as you type</span>
             <button id="clear" type="button" class="text-button"><span data-i18n="btnClear">Clear</span> <span aria-hidden="true">↺</span></button>
@@ -237,7 +397,7 @@
               </svg>
             </div>
             <p>Your QR preview will appear here.</p>
-            <span class="empty-sub">Add some content to generate</span>
+            <span class="empty-sub">Type content above to generate instantly</span>
           </div>
         </div>
         <p id="status" role="status" aria-live="polite">Add some content to see your QR code.</p>
@@ -245,7 +405,10 @@
           <button type="button" id="png" disabled><span data-i18n="btnPng">Download PNG</span> <span aria-hidden="true">↓</span></button>
           <button type="button" id="svg" disabled><span data-i18n="btnSvg">SVG</span> <span aria-hidden="true">↓</span></button>
         </div>
-        <button type="button" id="copy" class="copy" disabled data-i18n="btnCopy">Copy payload</button>
+        <div class="preview-secondary-actions">
+          <button type="button" id="copy" class="copy" disabled data-i18n="btnCopy">Copy payload</button>
+          <button type="button" id="print-btn" class="print-btn" disabled title="Print QR Code directly">Print 🖨️</button>
+        </div>
         <p class="export-note">PNG · 1024 px &nbsp;/&nbsp; SVG · scalable vector</p>
       </div>
     </section>
@@ -267,7 +430,7 @@
         <article class="step-card">
           <span class="step-num">01</span>
           <h3>Input Your Destination</h3>
-          <p>Type or paste any URL, text message, or Wi-Fi network credentials into the form above.</p>
+          <p>Choose your content type (URL, Wi-Fi, Text, Contact, or SMS) and enter your details into the form above.</p>
         </article>
         <article class="step-card">
           <span class="step-num">02</span>
@@ -342,47 +505,89 @@
     </section>
   </main>
 
-  <!-- SOVEREIGN FOOTER & HUMAN SITEMAP BLOCK -->
+  <!-- SOVEREIGN FOOTER: COMPREHENSIVE SITEMAP, LANGUAGE & TOOLS -->
   <footer class="site-footer">
-    <div class="footer-sitemap-grid">
-      <div class="sitemap-col">
-        <h4>FreeQR Tool</h4>
-        <ul>
-          <li><a href="#generator">QR Generator</a></li>
-          <li><a href="#how-it-works">How It Works</a></li>
-          <li><a href="#questions">FAQ &amp; Guide</a></li>
-          <li><a href="#" id="footer-about-link">About FreeQR</a></li>
-        </ul>
+    <div class="footer-top-bar">
+      <div class="footer-brand-wrap">
+        <div class="brand-row">
+          <span class="brand-logo-mark" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="7" height="7" rx="1.5"></rect>
+              <rect x="14" y="3" width="7" height="7" rx="1.5"></rect>
+              <rect x="14" y="14" width="7" height="7" rx="1.5"></rect>
+              <rect x="3" y="14" width="7" height="7" rx="1.5"></rect>
+            </svg>
+          </span>
+          <span class="brand-main">Free<strong>QR</strong></span>
+        </div>
+        <small class="brand-signature">powered by OTHRYS</small>
+        <p class="footer-tagline">Permanent, client-side static QR codes with zero telemetry, zero servers, and zero cloud tracking.</p>
+
+        <!-- Language Switcher in Footer -->
+        <div class="footer-lang-wrap">
+          <span class="lang-icon" aria-hidden="true">🌐</span>
+          <select id="lang-select" class="lang-select" aria-label="Select language" title="Select language">
+            <option value="en">English (EN)</option>
+            <option value="nl">Nederlands (NL)</option>
+            <option value="fr">Français (FR)</option>
+            <option value="de">Deutsch (DE)</option>
+            <option value="es">Español (ES)</option>
+          </select>
+        </div>
       </div>
-      <div class="sitemap-col">
-        <h4>Sovereign Fleet</h4>
-        <ul>
-          <li><a href="https://shrinkmyphoto.othrys.be" target="_blank" rel="noopener">ShrinkMyPhoto</a></li>
-          <li><a href="https://quickpercent.othrys.be" target="_blank" rel="noopener">QuickPercent</a></li>
-          <li><a href="https://unixtime.othrys.be" target="_blank" rel="noopener">UnixTime</a></li>
-          <li><a href="https://fillthispdf.othrys.be" target="_blank" rel="noopener">FillThisPDF</a></li>
-          <li><a href="https://mergepdf.othrys.be" target="_blank" rel="noopener">MergePDF</a></li>
-        </ul>
-      </div>
-      <div class="sitemap-col">
-        <h4>Trust &amp; Sovereignty</h4>
-        <ul>
-          <li><a href="#privacy">Zero-Cookie Policy</a></li>
-          <li><a href="#privacy">Zero-Cloud Guarantee</a></li>
-          <li><a href="https://othrys.be/architecture" target="_blank" rel="noopener">Fleet Telemetry</a></li>
-          <li><a href="https://github.com/vtcbelgium/freeqr/blob/main/LICENSE" target="_blank" rel="noopener">MIT License</a></li>
-        </ul>
-      </div>
-      <div class="sitemap-col">
-        <h4>Network &amp; Source</h4>
-        <ul>
-          <li><a href="https://othrys.be" target="_blank" rel="noopener">OTHRYS Hub</a></li>
-          <li><a href="https://github.com/vtcbelgium/freeqr" target="_blank" rel="noopener">GitHub Repository</a></li>
-          <li><a href="/sitemap.xml">XML Sitemap</a></li>
-          <li><a href="/robots.txt">Robots.txt</a></li>
-        </ul>
+
+      <div class="footer-sitemap-grid">
+        <div class="sitemap-col">
+          <h4>Utility &amp; Guide</h4>
+          <ul>
+            <li><a href="#generator">QR Generator</a></li>
+            <li><a href="#how-it-works">How It Works</a></li>
+            <li><a href="#questions">FAQ &amp; Guide</a></li>
+            <li><button type="button" class="footer-link-btn" id="nav-about-btn" data-i18n="navAbout">About FreeQR</button></li>
+            <li><button type="button" class="footer-link-btn" id="nav-settings-btn" data-i18n="navSettings">Display &amp; Accessibility</button></li>
+          </ul>
+        </div>
+        <div class="sitemap-col">
+          <h4>Sovereign Fleet</h4>
+          <ul>
+            <li><a href="https://shrinkmyphoto.othrys.be" target="_blank" rel="noopener">ShrinkMyPhoto</a></li>
+            <li><a href="https://quickpercent.othrys.be" target="_blank" rel="noopener">QuickPercent</a></li>
+            <li><a href="https://unixtime.othrys.be" target="_blank" rel="noopener">UnixTime</a></li>
+            <li><a href="https://fillthispdf.othrys.be" target="_blank" rel="noopener">FillThisPDF</a></li>
+            <li><a href="https://mergepdf.othrys.be" target="_blank" rel="noopener">MergePDF</a></li>
+          </ul>
+        </div>
+        <div class="sitemap-col">
+          <h4>Trust &amp; Privacy</h4>
+          <ul>
+            <li>
+              <button type="button" id="cookie-status-pill" class="footer-tool-btn" title="Inspect zero-cookie status" aria-label="Cookie and Privacy Status">
+                <span class="dot-indicator" aria-hidden="true"></span>
+                <span data-i18n="cookieBadge">0 Cookies</span> (Audit)
+              </button>
+            </li>
+            <li>
+              <button type="button" id="vault-pill" class="footer-tool-btn" title="Client-Side Storage Vault" aria-label="Open Storage Vault">
+                <span data-i18n="navAccount">Vault</span> (Local Storage)
+              </button>
+            </li>
+            <li><a href="#privacy">Zero-Cloud Guarantee</a></li>
+            <li><a href="https://othrys.be/architecture" target="_blank" rel="noopener">Fleet Telemetry</a></li>
+            <li><a href="https://github.com/vtcbelgium/freeqr/blob/main/LICENSE" target="_blank" rel="noopener">MIT License</a></li>
+          </ul>
+        </div>
+        <div class="sitemap-col">
+          <h4>Network &amp; Source</h4>
+          <ul>
+            <li><a href="https://othrys.be" target="_blank" rel="noopener">OTHRYS Hub</a></li>
+            <li><a href="https://github.com/vtcbelgium/freeqr" target="_blank" rel="noopener">GitHub Repository</a></li>
+            <li><a href="/sitemap.xml">XML Sitemap</a></li>
+            <li><a href="/robots.txt">Robots.txt</a></li>
+          </ul>
+        </div>
       </div>
     </div>
+
     <div class="footer-bottom">
       <span data-i18n="footerRights">© 2026 OTHRYS. Built to be useful, private, and durable.</span>
       <span class="sovereign-tag">100% Client-Side · Zero Cookies · Zero Cloud Tracking</span>
