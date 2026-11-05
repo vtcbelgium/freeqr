@@ -106,4 +106,30 @@ describe('Sovereign Building Blocks in FreeQR', () => {
     expect(existsSync(new URL('../public/404.html', import.meta.url))).toBe(true);
     expect(existsSync(new URL('../public/sitemap.xml', import.meta.url))).toBe(true);
   });
+
+  it('declares authoritative machine-readable BLUEPRINT.json defining desired-state blocks and constraints', () => {
+    expect(existsSync(new URL('../BLUEPRINT.json', import.meta.url))).toBe(true);
+    const blueprint = JSON.parse(read('BLUEPRINT.json'));
+    expect(blueprint.oros_id).toBe('freeqr');
+    expect(blueprint.single_job).toBeDefined();
+    expect(blueprint.required_blocks.length).toBeGreaterThanOrEqual(8);
+    expect(blueprint.constraints.zero_cookies).toBe(true);
+    expect(blueprint.constraints.zero_cloud_upload).toBe(true);
+  });
+
+  it('declares authoritative machine-readable CONSTELLATION.json defining operational stars and governing titans', () => {
+    expect(existsSync(new URL('../CONSTELLATION.json', import.meta.url))).toBe(true);
+    const constellation = JSON.parse(read('CONSTELLATION.json'));
+    expect(constellation.oros_id).toBe('freeqr');
+    expect(constellation.status).toBe('operational');
+    expect(constellation.governing_titans.length).toBeGreaterThanOrEqual(7);
+    expect(constellation.stars.length).toBeGreaterThanOrEqual(7);
+    
+    // Verify each star specifies its governing Titan and monetization model
+    const starNames = constellation.stars.map((s: { name: string }) => s.name);
+    expect(starNames).toContain('Core Visual Matrix Star');
+    expect(starNames).toContain('Zero-Cookie & Privacy Sentinel Star');
+    expect(starNames).toContain('Search Discovery & Schema Star');
+    expect(starNames).toContain('Fleet Health & Test Vigilance Star');
+  });
 });

@@ -1,0 +1,77 @@
+{
+  "$schema": "https://othrys.be/schemas/blueprint.v1.json",
+  "blueprint_id": "blueprint.freeqr.v1",
+  "schema_version": "1.0.0",
+  "oros_id": "freeqr",
+  "name": "FreeQR",
+  "title": "Free QR Code Generator for Links, Text & Wi-Fi",
+  "domain": "freeqr.othrys.be",
+  "thesis": "Ultra-fast, distraction-free, 100% client-side static QR code generator for links, text, and Wi-Fi networks with zero cloud telemetry and zero cookies.",
+  "single_job": "Generate and download pristine static QR codes (PNG & SVG) instantly in browser.",
+  "runtime": {
+    "type": "spa-edge",
+    "stack": "vanilla-typescript-vite",
+    "hosting": "github-pages",
+    "cname": "freeqr.othrys.be"
+  },
+  "required_blocks": [
+    {
+      "id": "block.qr.client-qr-engine",
+      "version": "1.0.0",
+      "purpose": "Client-side matrix rendering to Canvas and SVG without cloud roundtrips",
+      "titan": "Hyperion"
+    },
+    {
+      "id": "block.web.sovereign-shell",
+      "version": "1.0.0",
+      "purpose": "Sovereign header, brand identity, navigation, skip link, and 4-column footer sitemap",
+      "titan": "Rhea"
+    },
+    {
+      "id": "block.privacy.cookie-inspector",
+      "version": "1.0.0",
+      "purpose": "Real-time cookie count verification, zero-cookie guarantee, and GDPR/ePrivacy compliance audit",
+      "titan": "Themis"
+    },
+    {
+      "id": "block.storage.vault",
+      "version": "1.0.0",
+      "purpose": "Client-side private storage inspector with export, import, and zero-trace wipe",
+      "titan": "Oceanus"
+    },
+    {
+      "id": "block.theme.settings-theme",
+      "version": "1.0.0",
+      "purpose": "Zero-flicker Paper White (#ffffff) and OLED Pure Black (#000000) with WCAG AAA high-contrast toggle",
+      "titan": "Rhea"
+    },
+    {
+      "id": "block.i18n.locale-switch",
+      "version": "1.0.0",
+      "purpose": "In-memory UI translation (EN, NL, FR, DE, ES) and SEO alternate hreflang tags",
+      "titan": "Prometheus"
+    },
+    {
+      "id": "block.discovery.sitemap",
+      "version": "1.0.0",
+      "purpose": "Structured XML sitemap, robots.txt, and Schema.org WebApplication & FAQPage JSON-LD",
+      "titan": "Prometheus"
+    },
+    {
+      "id": "block.pwa.offline-core",
+      "version": "1.0.0",
+      "purpose": "Progressive Web App service worker and web manifest for complete offline capability",
+      "titan": "Oceanus"
+    }
+  ],
+  "constraints": {
+    "zero_cloud_upload": true,
+    "zero_cookies": true,
+    "zero_analytics_trackers": true,
+    "zero_third_party_fonts": true,
+    "offline_first": true,
+    "strict_csp": "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; connect-src 'self' https://othrys.be; object-src 'none';"
+  },
+  "export_formats": ["png", "svg"],
+  "qr_types_supported": ["text", "url", "wifi"]
+}

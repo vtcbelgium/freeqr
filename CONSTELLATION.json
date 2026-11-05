@@ -1,0 +1,172 @@
+{
+  "$schema": "https://othrys.be/schemas/constellation.v1.json",
+  "constellation_id": "constellation.freeqr.sovereign",
+  "schema_version": "1.0.0",
+  "oros_id": "freeqr",
+  "name": "FreeQR Micro-Constellation",
+  "status": "operational",
+  "doctrine": "Blocks build the Oros. Blueprint defines desired-state needs. Constellation observes and governs the Oros via Stars. Titans belong to OTHRYS. The Oros owns runtime reality.",
+  "monetization_doctrine": "When users order a site in the future, Blocks build it (one-time or composable asset). The ongoing recurring value is the Constellation: customers subscribe to Stars operated autonomously by Titans.",
+  "governing_titans": [
+    {
+      "titan": "Hyperion",
+      "epithet": "Synthesis & Matrix Precision",
+      "primary_star": "star.core-qr",
+      "duty": "Observes QR engine performance, sub-50ms canvas rendering, and vector SVG fidelity."
+    },
+    {
+      "titan": "Themis",
+      "epithet": "Law & Privacy Compliance",
+      "primary_star": "star.privacy-guard",
+      "duty": "Audits zero-cookie invariant, enforces strict CSP, and ensures full ePrivacy/GDPR immunity."
+    },
+    {
+      "titan": "Prometheus",
+      "epithet": "Discovery & Foresight",
+      "primary_star": "star.seo-discovery",
+      "duty": "Maintains search engine indexability, sitemap freshness, hreflang sync, and schema.org parity."
+    },
+    {
+      "titan": "Rhea",
+      "epithet": "Order & Experience Layout",
+      "primary_star": "star.experience-theme",
+      "duty": "Guarantees zero-flicker theme transitions, Paper/OLED contrast ratios, and keyboard accessibility."
+    },
+    {
+      "titan": "Theia",
+      "epithet": "Light & Microcopy",
+      "primary_star": "star.experience-theme",
+      "duty": "Maintains crisp typography, clean visual hierarchy, and relentless single-job simplicity."
+    },
+    {
+      "titan": "Oceanus",
+      "epithet": "Depths & Persistence",
+      "primary_star": "star.offline-vault",
+      "duty": "Monitors service worker lifecycle, PWA offline availability, and client-side vault isolation."
+    },
+    {
+      "titan": "Argus",
+      "epithet": "Vigilance & Integrity Patrol",
+      "primary_star": "star.uptime-integrity",
+      "duty": "Patrols 100% test passing rates, bundle size budgets, and synthetic uptime heartbeats."
+    },
+    {
+      "titan": "Kronos",
+      "epithet": "Harvest & Fleet Monetization",
+      "primary_star": "star.monetization-router",
+      "duty": "Coordinates cross-fleet sovereign traffic and routes future paid Star subscriptions."
+    }
+  ],
+  "stars": [
+    {
+      "star_id": "star.core-qr",
+      "name": "Core Visual Matrix Star",
+      "titan": "Hyperion",
+      "tier": "sovereign-free",
+      "billable": false,
+      "price_eur_month": 0,
+      "governed_blocks": ["block.qr.client-qr-engine"],
+      "health_checks": [
+        "check_matrix_generation_latency",
+        "check_svg_xml_validity",
+        "check_png_contrast_ratio"
+      ],
+      "sla": "In-browser QR generation < 50ms"
+    },
+    {
+      "star_id": "star.privacy-guard",
+      "name": "Zero-Cookie & Privacy Sentinel Star",
+      "titan": "Themis",
+      "tier": "managed-pro",
+      "billable": true,
+      "price_eur_month": 19,
+      "monetization_description": "Continuous automated compliance monitoring: certifies zero tracking cookies, valid CSP headers, and GDPR/ePrivacy immunity without banner fatigue.",
+      "governed_blocks": ["block.privacy.cookie-inspector"],
+      "health_checks": [
+        "check_document_cookies_empty",
+        "check_csp_headers_uncompromised",
+        "check_zero_cloud_network_calls"
+      ],
+      "sla": "Zero data leak invariant"
+    },
+    {
+      "star_id": "star.seo-discovery",
+      "name": "Search Discovery & Schema Star",
+      "titan": "Prometheus",
+      "tier": "managed-pro",
+      "billable": true,
+      "price_eur_month": 29,
+      "monetization_description": "Automated SEO radar: sitemap.xml freshness patrol, robots.txt integrity, multi-locale hreflang synchronization, and schema.org FAQPage / WebApplication enrichment.",
+      "governed_blocks": ["block.discovery.sitemap", "block.i18n.locale-switch"],
+      "health_checks": [
+        "check_sitemap_xml_status",
+        "check_robots_txt_format",
+        "check_json_ld_schema_validity",
+        "check_hreflang_matrix"
+      ],
+      "sla": "100% search engine indexability"
+    },
+    {
+      "star_id": "star.experience-theme",
+      "name": "Adaptive Theme & Accessibility Star",
+      "titan": "Rhea & Theia",
+      "tier": "sovereign-free",
+      "billable": false,
+      "price_eur_month": 0,
+      "governed_blocks": ["block.theme.settings-theme", "block.web.sovereign-shell"],
+      "health_checks": [
+        "check_zero_flicker_inline_script",
+        "check_paper_oled_contrast",
+        "check_focus_visible_outlines"
+      ],
+      "sla": "WCAG AAA high-contrast readiness & zero-flicker boot"
+    },
+    {
+      "star_id": "star.offline-vault",
+      "name": "Offline PWA & Sovereign Vault Star",
+      "titan": "Oceanus",
+      "tier": "managed-pro",
+      "billable": true,
+      "price_eur_month": 15,
+      "monetization_description": "Offline resilience assurance: PWA service worker asset caching, background sync validation, and zero-loss local vault export/import tools.",
+      "governed_blocks": ["block.storage.vault", "block.pwa.offline-core"],
+      "health_checks": [
+        "check_sw_cache_response",
+        "check_manifest_validity",
+        "check_vault_json_roundtrip"
+      ],
+      "sla": "Immediate offline boot from cache"
+    },
+    {
+      "star_id": "star.uptime-integrity",
+      "name": "Fleet Health & Test Vigilance Star",
+      "titan": "Argus",
+      "tier": "managed-enterprise",
+      "billable": true,
+      "price_eur_month": 49,
+      "monetization_description": "End-to-end continuous automated quality patrol: runs unit and regression suites on every release, enforces tight bundle budgets, and monitors edge DNS status.",
+      "governed_blocks": ["*"],
+      "health_checks": [
+        "check_test_suite_all_green",
+        "check_bundle_size_budget",
+        "check_edge_ssl_expiry"
+      ],
+      "sla": "99.99% operational verification"
+    },
+    {
+      "star_id": "star.monetization-router",
+      "name": "Sovereign Commerce & Sponsor Star",
+      "titan": "Kronos",
+      "tier": "managed-growth",
+      "billable": true,
+      "price_eur_month": 39,
+      "monetization_description": "Smart monetization management: non-intrusive tip jars (Ko-fi/PayPal), affiliate link rotation with automatic FTC disclosure, and sponsored fleet cross-promotions.",
+      "governed_blocks": ["block.monetization.affiliate-disclosure"],
+      "health_checks": [
+        "check_affiliate_disclosures_present",
+        "check_payment_endpoints_live"
+      ],
+      "sla": "Zero tracking monetization"
+    }
+  ]
+}
