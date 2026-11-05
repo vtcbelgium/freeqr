@@ -101,10 +101,20 @@
   
   <!-- SOVEREIGN HEADER BLOCK -->
   <header class="site-header">
-    <a class="brand othrys-brand" href="./" aria-label="FreeQR home">
-      <span class="brand-main">Free<strong>QR</strong></span>
-      <small class="brand-signature">an OTHRYS utility</small>
-    </a>
+    <div class="header-left">
+      <a class="brand othrys-brand" href="./" aria-label="FreeQR home">
+        <span class="brand-logo-mark" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="7" height="7" rx="1.5"></rect>
+            <rect x="14" y="3" width="7" height="7" rx="1.5"></rect>
+            <rect x="14" y="14" width="7" height="7" rx="1.5"></rect>
+            <rect x="3" y="14" width="7" height="7" rx="1.5"></rect>
+          </svg>
+        </span>
+        <span class="brand-main">Free<strong>QR</strong></span>
+        <span class="sovereign-status-badge" title="No registration, tracking, or cloud backend required">Sovereign</span>
+      </a>
+    </div>
     
     <nav class="site-nav" aria-label="Main Navigation">
       <a href="#generator" data-i18n="navGenerator">Generator</a>
@@ -112,10 +122,20 @@
       <a href="#privacy" data-i18n="navPrivacy">Privacy &amp; Legal</a>
       <a href="#questions" data-i18n="navFaq">FAQ</a>
       <button type="button" class="nav-link-btn" id="nav-about-btn" data-i18n="navAbout">About</button>
-      <a href="https://othrys.be/architecture" target="_blank" rel="noopener noreferrer" class="nav-fleet-pill" title="View Sovereign Fleet Telemetry">Fleet ↗</a>
     </nav>
 
     <div class="header-actions">
+      <!-- Cookie Inspector Pill (clean, no emoji clutter) -->
+      <button type="button" id="cookie-status-pill" class="header-pill cookie-pill" title="Inspect zero-cookie status" aria-label="Cookie and Privacy Status">
+        <span class="dot-indicator" aria-hidden="true"></span>
+        <span data-i18n="cookieBadge">0 Cookies</span>
+      </button>
+
+      <!-- Sovereign Account / Storage Vault Pill -->
+      <button type="button" id="vault-pill" class="header-pill vault-pill" title="Client-Side Storage Vault" aria-label="Open Storage Vault">
+        <span data-i18n="navAccount">Vault</span>
+      </button>
+
       <!-- Language Switcher -->
       <select id="lang-select" class="lang-select" aria-label="Select language" title="Select language">
         <option value="en">EN</option>
@@ -125,33 +145,24 @@
         <option value="es">ES</option>
       </select>
 
-      <!-- Sovereign Status Badge -->
-      <span class="sovereign-status-badge" title="No registration, tracking, or cloud backend required">🔓 Sovereign</span>
-
-      <!-- Cookie Inspector Pill -->
-      <button type="button" id="cookie-status-pill" class="cookie-pill" title="Inspect zero-cookie status" aria-label="Cookie and Privacy Status">
-        <span>🍪</span> <span data-i18n="cookieBadge">0 Cookies</span>
-      </button>
-
-      <!-- Sovereign Account / Storage Vault Pill -->
-      <button type="button" id="vault-pill" class="vault-pill" title="Client-Side Storage Vault" aria-label="Open Storage Vault">
-        <span>🔒</span> <span data-i18n="navAccount">Vault</span>
-      </button>
+      <a href="https://othrys.be/architecture" target="_blank" rel="noopener noreferrer" class="nav-fleet-pill" title="View Sovereign Fleet Telemetry">Fleet ↗</a>
 
       <!-- Settings Cog Button -->
-      <button type="button" id="nav-settings-btn" class="settings-toggle" title="Display & Accessibility Settings" aria-label="Settings">
+      <button type="button" id="nav-settings-btn" class="icon-toggle-btn" title="Display & Accessibility Settings" aria-label="Settings">
         ⚙
       </button>
 
       <!-- Theme Toggle Button -->
-      <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Toggle dark/light theme" title="Toggle theme">◐</button>
+      <button type="button" id="theme-toggle" class="icon-toggle-btn" aria-label="Toggle dark/light theme" title="Toggle theme">◐</button>
     </div>
   </header>
 
   <main id="main-content">
     <!-- HERO SECTION -->
     <section class="intro" aria-labelledby="title">
-      <p class="eyebrow"><span></span><span data-i18n="heroEyebrow">FREE · STATIC · PRIVATE</span></p>
+      <div class="hero-badge-wrap">
+        <p class="eyebrow"><span class="eyebrow-dot"></span><span data-i18n="heroEyebrow">FREE · STATIC · PRIVATE</span></p>
+      </div>
       <h1 id="title" data-i18n="heroTitle">Free QR code generator</h1>
       <p data-i18n="heroDescription">Create a QR code for a website link, text, or Wi-Fi network. Download a PNG or SVG, with no account required.</p>
     </section>
@@ -161,19 +172,19 @@
       <div class="editor">
         <div class="step">
           <span>01 / ENTER CONTENT</span>
-          <span>LOCAL GENERATION</span>
+          <span class="step-badge">LOCAL GENERATION</span>
         </div>
         <h2>Create your QR code</h2>
         <form id="qr-form" novalidate>
           <fieldset class="mode">
             <legend class="sr-only">QR code type</legend>
-            <label>
+            <label class="mode-tab">
               <input type="radio" name="mode" value="text" checked>
-              <span data-i18n="modeText">↗ &nbsp; Text or URL</span>
+              <span class="mode-label" data-i18n="modeText">↗ Text or URL</span>
             </label>
-            <label>
+            <label class="mode-tab">
               <input type="radio" name="mode" value="wifi">
-              <span data-i18n="modeWifi">⌁ &nbsp; Wi-Fi network</span>
+              <span class="mode-label" data-i18n="modeWifi">⌁ Wi-Fi network</span>
             </label>
           </fieldset>
           <div id="text-fields">
@@ -201,7 +212,7 @@
           </div>
           <p id="error" class="error" role="alert"></p>
           <div class="editor-bottom">
-            <span>Updates as you type</span>
+            <span class="live-status"><span class="pulse-dot"></span> Updates as you type</span>
             <button id="clear" type="button" class="text-button"><span data-i18n="btnClear">Clear</span> <span aria-hidden="true">↺</span></button>
           </div>
         </form>
@@ -209,14 +220,24 @@
 
       <div class="preview-panel">
         <div class="step">
-          <span>02 / DOWNLOAD</span>
-          <span id="badge">YOUR PREVIEW</span>
+          <span>02 / PREVIEW &amp; DOWNLOAD</span>
+          <span id="badge" class="step-badge">LIVE CANVAS</span>
         </div>
-        <div class="qr-stage">
+        <div class="qr-stage" id="qr-stage">
           <img id="qr-image" alt="Generated QR code" hidden>
           <div id="empty">
-            <span class="empty-icon" aria-hidden="true">▦</span>
-            <p>Your QR preview<br>will appear here.</p>
+            <div class="empty-icon-wrap" aria-hidden="true">
+              <svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="7" height="7" rx="1.5"></rect>
+                <rect x="14" y="3" width="7" height="7" rx="1.5"></rect>
+                <rect x="14" y="14" width="7" height="7" rx="1.5"></rect>
+                <rect x="3" y="14" width="7" height="7" rx="1.5"></rect>
+                <line x1="7" y1="17" x2="7" y2="17.01"></line>
+                <line x1="17" y1="7" x2="17" y2="7.01"></line>
+              </svg>
+            </div>
+            <p>Your QR preview will appear here.</p>
+            <span class="empty-sub">Add some content to generate</span>
           </div>
         </div>
         <p id="status" role="status" aria-live="polite">Add some content to see your QR code.</p>
@@ -225,21 +246,21 @@
           <button type="button" id="svg" disabled><span data-i18n="btnSvg">SVG</span> <span aria-hidden="true">↓</span></button>
         </div>
         <button type="button" id="copy" class="copy" disabled data-i18n="btnCopy">Copy payload</button>
-        <p class="export-note">PNG · 1024 px &nbsp; / &nbsp; SVG · scalable vector</p>
+        <p class="export-note">PNG · 1024 px &nbsp;/&nbsp; SVG · scalable vector</p>
       </div>
     </section>
 
     <!-- VALUE PROPOSITIONS -->
     <div class="promises">
-      <p><span aria-hidden="true">◎</span> Private by design</p>
-      <p><span aria-hidden="true">◇</span> No account needed</p>
-      <p><span aria-hidden="true">↓</span> Free to download</p>
+      <div class="promise-item"><span aria-hidden="true">◎</span> <span>Private by design</span></div>
+      <div class="promise-item"><span aria-hidden="true">◇</span> <span>No account needed</span></div>
+      <div class="promise-item"><span aria-hidden="true">↓</span> <span>Free to download</span></div>
     </div>
 
     <!-- HOW IT WORKS SECTION -->
     <section class="how-it-works-section" id="how-it-works" aria-labelledby="how-title">
       <div class="section-heading">
-        <p class="eyebrow"><span></span>SIMPLE &amp; DURABLE</p>
+        <p class="eyebrow"><span class="eyebrow-dot"></span>SIMPLE &amp; DURABLE</p>
         <h2 id="how-title">How FreeQR Works in 3 Steps</h2>
       </div>
       <div class="steps-grid">
@@ -266,7 +287,7 @@
       <div class="privacy-card">
         <span class="privacy-shield-icon" aria-hidden="true">🛡️</span>
         <div>
-          <p class="eyebrow"><span></span>SOVEREIGN PRIVACY GUARANTEE</p>
+          <p class="eyebrow"><span class="eyebrow-dot"></span>SOVEREIGN PRIVACY GUARANTEE</p>
           <h2 id="privacy-title">Zero Cloud Uploads. Zero Tracking. 100% Private.</h2>
           <p>
             FreeQR operates entirely within your browser's local sandbox. When you type or paste links, passwords, or text, 
@@ -279,7 +300,7 @@
             </div>
             <div class="spec-item">
               <strong>Zero Cookies Policy</strong>
-              <span>Strict compliance with EU ePrivacy Directive 2002/58/EC &amp; GDPR Art 5(3). Zero cookie consent banner required.</span>
+              <span>Strict compliance with EU ePrivacy Directive 2002/58/EC &amp; GDPR Article 5(3). Zero cookie consent banner required.</span>
             </div>
             <div class="spec-item">
               <strong>Open &amp; Verifiable</strong>
@@ -296,7 +317,7 @@
     <!-- FAQ SECTION -->
     <section class="faq" id="questions" aria-labelledby="faq-title">
       <div>
-        <p class="eyebrow"><span></span>HELP</p>
+        <p class="eyebrow"><span class="eyebrow-dot"></span>HELP</p>
         <h2 id="faq-title">Frequently asked questions</h2>
         <p>Answers about QR code formats and privacy.</p>
       </div>

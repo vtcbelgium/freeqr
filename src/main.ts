@@ -31,6 +31,7 @@ function invalidate() {
   image.hidden = true;
   image.removeAttribute('src');
   el('empty').hidden = false;
+  el('qr-stage')?.classList.remove('has-qr');
 }
 
 async function update() {
@@ -54,6 +55,7 @@ async function update() {
     image.src = result.png;
     image.hidden = false;
     el('empty').hidden = true;
+    el('qr-stage')?.classList.add('has-qr');
     actions.forEach(button => button.disabled = false);
     status.textContent = t.statusReady;
   } catch (cause) {
