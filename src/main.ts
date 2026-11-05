@@ -67,6 +67,13 @@ async function update() {
 el('qr-form').addEventListener('submit', event => event.preventDefault());
 el('qr-form').addEventListener('input', () => { ++revision; invalidate(); clearTimeout(timer); timer = setTimeout(update, 180); });
 el('qr-form').addEventListener('change', () => { clearTimeout(timer); void update(); });
+// Power shortcut: Ctrl+Enter or Cmd+Enter inside payload triggers PNG download
+text.addEventListener('keydown', (e) => {
+  if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+    e.preventDefault();
+    if (current) download('png');
+  }
+});
 el('clear').addEventListener('click', () => {
   clearTimeout(timer); text.value = ssid.value = password.value = ''; hidden.checked = false;
   void update(); (isWifi() ? ssid : text).focus();
