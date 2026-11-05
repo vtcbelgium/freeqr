@@ -1,4 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://freeqr.othrys.be/</loc></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://freeqr.othrys.be/</loc>
+    <lastmod>2026-11-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://freeqr.othrys.be/?lang=en" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://freeqr.othrys.be/?lang=nl" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://freeqr.othrys.be/?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://freeqr.othrys.be/?lang=de" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://freeqr.othrys.be/?lang=es" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://freeqr.othrys.be/" />
+  </url>
 </urlset>

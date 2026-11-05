@@ -1,6 +1,12 @@
 import './style.css';
 import { validatePayload, wifiPayload, type Security } from './payload';
 import { generateQR } from './qr';
+import { showToast } from './toast';
+import { initI18n, getTranslations } from './i18n';
+import { initThemeController } from './theme';
+import { initVaultDrawer } from './vault';
+import { initCookieModal } from './cookies';
+import { initModals } from './modals';
 
 const el = <T extends HTMLElement>(id: string) => document.getElementById(id) as T;
 const text = el<HTMLTextAreaElement>('payload');
@@ -28,6 +34,7 @@ function invalidate() {
 }
 
 async function update() {
+  const t = getTranslations();
   const version = ++revision;
   invalidate();
   error.textContent = '';
@@ -35,12 +42,12 @@ async function update() {
   el('text-fields').hidden = isWifi();
   el('wifi-fields').hidden = !isWifi();
   el('password-field').hidden = security.value === 'nopass';
-  status.textContent = 'Add some content to see your QR code.';
+  status.textContent = t.statusEmpty;
   const empty = isWifi() ? !ssid.value && !password.value : !text.value;
   if (empty) return;
   try {
     const payload = validatePayload(isWifi() ? wifiPayload(ssid.value, password.value, security.value as Security, hidden.checked) : text.value);
-    status.textContent = 'Creating your QR code…';
+    status.textContent = t.statusCreating;
     const result = await generateQR(payload);
     if (version !== revision) return;
     current = {...result, payload};
@@ -48,7 +55,7 @@ async function update() {
     image.hidden = false;
     el('empty').hidden = true;
     actions.forEach(button => button.disabled = false);
-    status.textContent = 'Ready. Test with your phone before sharing.';
+    status.textContent = t.statusReady;
   } catch (cause) {
     if (version !== revision) return;
     error.textContent = cause instanceof Error ? cause.message : 'Could not create this QR code. Try shorter content.';
@@ -63,6 +70,7 @@ el('qr-form').addEventListener('change', () => { clearTimeout(timer); void updat
 el('clear').addEventListener('click', () => {
   clearTimeout(timer); text.value = ssid.value = password.value = ''; hidden.checked = false;
   void update(); (isWifi() ? ssid : text).focus();
+  showToast('Input cleared.');
 });
 
 function download(format: 'png' | 'svg') {
@@ -72,31 +80,35 @@ function download(format: 'png' | 'svg') {
   const anchor = document.createElement('a'); anchor.href = url; anchor.download = `freeqr.${format}`;
   document.body.append(anchor); anchor.click(); anchor.remove();
   if (blob) setTimeout(() => URL.revokeObjectURL(url), 1000);
+  showToast(`Downloaded QR code as ${format.toUpperCase()}`);
 }
 
 el('png').addEventListener('click', () => download('png'));
 el('svg').addEventListener('click', () => download('svg'));
 el('copy').addEventListener('click', async () => {
   if (!current) return;
-  try { await navigator.clipboard.writeText(current.payload); status.textContent = 'Payload copied to clipboard.'; }
-  catch { error.textContent = 'Clipboard access is unavailable. You can select and copy your text from the form.'; }
+  try {
+    await navigator.clipboard.writeText(current.payload);
+    const t = getTranslations();
+    status.textContent = t.statusCopied;
+    showToast(t.statusCopied);
+  } catch {
+    error.textContent = 'Clipboard access is unavailable. You can select and copy your text from the form.';
+  }
 });
 
-// Sovereign Theme Controller (localStorage persistence + system dark/light match)
-function initThemeController() {
-  const toggle = document.getElementById('theme-toggle');
-  const stored = localStorage.getItem('othrys-theme');
-  const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-  const initialTheme = stored || (prefersDark ? 'dark' : 'light');
-  document.documentElement.setAttribute('data-theme', initialTheme);
+// Initialize all sovereign core modules
+initThemeController();
+initI18n();
+initVaultDrawer();
+initCookieModal();
+initModals();
 
-  toggle?.addEventListener('click', () => {
-    const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
-    const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
-    document.documentElement.setAttribute('data-theme', nextTheme);
-    localStorage.setItem('othrys-theme', nextTheme);
+// Register Offline Service Worker if supported
+if ('serviceWorker' in navigator && window.location.protocol.startsWith('http')) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js').catch(() => {});
   });
 }
 
-initThemeController();
 void update();

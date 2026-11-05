@@ -1,0 +1,20 @@
+{
+  "name": "FreeQR — Sovereign QR Code Generator",
+  "short_name": "FreeQR",
+  "description": "Make free static QR codes for links, text, and Wi-Fi. 100% client-side, zero cloud tracking.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#000000",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["utilities", "productivity"]
+}

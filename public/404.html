@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>404 — Page Not Found | FreeQR</title>
+  <meta name="robots" content="noindex, follow">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <style>
+    :root {
+      --bg: #000000;
+      --text: #f8fafc;
+      --surface: #0f172a;
+      --border: #1e293b;
+      --accent: #4ade80;
+      --muted: #94a3b8;
+      font-family: Inter, system-ui, -apple-system, sans-serif;
+    }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg);
+      color: var(--text);
+      text-align: center;
+      padding: 24px;
+      box-sizing: border-box;
+    }
+    .card {
+      max-width: 480px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 40px 32px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    }
+    .badge {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 999px;
+      background: rgba(74, 222, 128, 0.1);
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    h1 {
+      margin: 0 0 12px 0;
+      font-size: 32px;
+      font-weight: 800;
+    }
+    p {
+      color: var(--muted);
+      line-height: 1.6;
+      margin: 0 0 28px 0;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      border-radius: 10px;
+      background: var(--accent);
+      color: #052e16;
+      font-weight: 700;
+      text-decoration: none;
+      transition: filter 0.15s;
+    }
+    .btn:hover { filter: brightness(1.1); }
+    .fleet-links {
+      margin-top: 24px;
+      font-size: 14px;
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .fleet-links a { color: var(--muted); text-decoration: underline; text-underline-offset: 4px; }
+    .fleet-links a:hover { color: var(--accent); }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <span class="badge">404 · Sovereign Error Boundary</span>
+    <h1>Page Not Found</h1>
+    <p>The sovereign URL you requested does not exist on FreeQR. All QR code generation is hosted on the root workspace.</p>
+    <a href="/" class="btn">Return to FreeQR Generator &rarr;</a>
+    <div class="fleet-links">
+      <a href="https://othrys.be">OTHRYS Home</a>
+      <a href="https://othrys.be/architecture">Fleet Telemetry</a>
+    </div>
+  </div>
+</body>
+</html>

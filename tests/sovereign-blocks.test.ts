@@ -1,4 +1,4 @@
-import { readFileSync } from 'node:fs';
+import { readFileSync, existsSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 
 const read = (path: string) => readFileSync(new URL(`../${path}`, import.meta.url), 'utf8');
@@ -41,12 +41,69 @@ describe('Sovereign Building Blocks in FreeQR', () => {
     expect(html).toContain('class="site-footer"');
     expect(html).toContain('https://othrys.be');
     expect(html).toContain('https://othrys.be/architecture');
-    expect(html).toContain('100% Client-Side · Zero Cloud Tracking');
+    expect(html).toContain('100% Client-Side · Zero Cookies · Zero Cloud Tracking');
   });
 
   it('includes structured FAQPage schema in JSON-LD', () => {
     expect(html).toContain('"@type": "FAQPage"');
     expect(html).toContain('Static or dynamic. What’s the difference?');
     expect(html).toContain('Where does my information go?');
+  });
+
+  it('includes Zero-Cookie guarantee pill, inspector dialog, and legal basis', () => {
+    expect(html).toContain('id="cookie-status-pill"');
+    expect(html).toContain('id="cookie-dialog"');
+    expect(html).toContain('Zero-Cookie &amp; Zero-Storage Guarantee');
+    expect(html).toContain('2002/58/EC');
+    expect(html).toContain('GDPR Article 5(3)');
+  });
+
+  it('includes Language (i18n) switcher and alternate hreflang tags', () => {
+    expect(html).toContain('id="lang-select"');
+    expect(html).toContain('rel="alternate" hreflang="en"');
+    expect(html).toContain('rel="alternate" hreflang="nl"');
+    expect(html).toContain('rel="alternate" hreflang="fr"');
+    expect(html).toContain('rel="alternate" hreflang="de"');
+    expect(html).toContain('rel="alternate" hreflang="es"');
+  });
+
+  it('includes Sovereign Account / Client-Side Vault drawer', () => {
+    expect(html).toContain('id="vault-pill"');
+    expect(html).toContain('id="vault-dialog"');
+    expect(html).toContain('id="vault-export-btn"');
+    expect(html).toContain('id="vault-wipe-btn"');
+    expect(html).toContain('id="vault-import-input"');
+  });
+
+  it('includes Settings drawer with Black or White theme choices and high contrast', () => {
+    expect(html).toContain('id="nav-settings-btn"');
+    expect(html).toContain('id="settings-dialog"');
+    expect(html).toContain('value="paper"');
+    expect(html).toContain('value="oled"');
+    expect(html).toContain('id="contrast-toggle"');
+  });
+
+  it('includes About modal with OTHYS provenance and client-side architecture', () => {
+    expect(html).toContain('id="nav-about-btn"');
+    expect(html).toContain('id="about-dialog"');
+    expect(html).toContain('About FreeQR &amp; OTHYS');
+  });
+
+  it('includes Human Sitemap in footer linking tools, fleet, trust, and network', () => {
+    expect(html).toContain('class="footer-sitemap-grid"');
+    expect(html).toContain('shrinkmyphoto.othrys.be');
+    expect(html).toContain('quickpercent.othrys.be');
+    expect(html).toContain('unixtime.othrys.be');
+    expect(html).toContain('/sitemap.xml');
+    expect(html).toContain('/robots.txt');
+  });
+
+  it('includes PWA manifest, strict CSP, and offline service worker assets', () => {
+    expect(html).toContain('rel="manifest" href="/manifest.webmanifest"');
+    expect(html).toContain('http-equiv="Content-Security-Policy"');
+    expect(existsSync(new URL('../public/manifest.webmanifest', import.meta.url))).toBe(true);
+    expect(existsSync(new URL('../public/sw.js', import.meta.url))).toBe(true);
+    expect(existsSync(new URL('../public/404.html', import.meta.url))).toBe(true);
+    expect(existsSync(new URL('../public/sitemap.xml', import.meta.url))).toBe(true);
   });
 });
