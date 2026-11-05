@@ -471,7 +471,7 @@
             </div>
           </div>
           <p class="legal-footnote">
-            Licensed under the permissive MIT Open Architecture. Provided as-is without warranty. Part of the <a href="https://othrys.be/architecture" target="_blank" rel="noopener noreferrer">OTHRYS sovereign utility fleet</a>.
+            Engineered under the Sovereign Open Architecture by OTHRYS in Belgium. Built to be private, permanent, and client-side. Part of the <a href="https://othrys.be/architecture" target="_blank" rel="noopener noreferrer">OTHRYS sovereign utility fleet</a>.
           </p>
         </div>
       </div>
@@ -507,7 +507,8 @@
 
   <!-- SOVEREIGN FOOTER: COMPREHENSIVE SITEMAP, LANGUAGE & TOOLS -->
   <footer class="site-footer">
-    <div class="footer-top-bar">
+    <!-- Row 1: Brand & Language Bar -->
+    <div class="footer-header-row">
       <div class="footer-brand-wrap">
         <div class="brand-row">
           <span class="brand-logo-mark" aria-hidden="true">
@@ -519,10 +520,13 @@
             </svg>
           </span>
           <span class="brand-main">Free<strong>QR</strong></span>
+          <span class="sovereign-status-badge">Sovereign</span>
         </div>
         <small class="brand-signature">powered by OTHRYS</small>
         <p class="footer-tagline">Permanent, client-side static QR codes with zero telemetry, zero servers, and zero cloud tracking.</p>
+      </div>
 
+      <div class="footer-header-controls">
         <!-- Language Switcher in Footer -->
         <div class="footer-lang-wrap">
           <span class="lang-icon" aria-hidden="true">🌐</span>
@@ -535,59 +539,64 @@
           </select>
         </div>
       </div>
+    </div>
 
-      <div class="footer-sitemap-grid">
-        <div class="sitemap-col">
-          <h4>Utility &amp; Guide</h4>
-          <ul>
-            <li><a href="#generator">QR Generator</a></li>
-            <li><a href="#how-it-works">How It Works</a></li>
-            <li><a href="#questions">FAQ &amp; Guide</a></li>
-            <li><button type="button" class="footer-link-btn" id="nav-about-btn" data-i18n="navAbout">About FreeQR</button></li>
-            <li><button type="button" class="footer-link-btn" id="nav-settings-btn" data-i18n="navSettings">Display &amp; Accessibility</button></li>
-          </ul>
-        </div>
-        <div class="sitemap-col">
-          <h4>Sovereign Fleet</h4>
-          <ul>
-            <li><a href="https://shrinkmyphoto.othrys.be" target="_blank" rel="noopener">ShrinkMyPhoto</a></li>
-            <li><a href="https://quickpercent.othrys.be" target="_blank" rel="noopener">QuickPercent</a></li>
-            <li><a href="https://unixtime.othrys.be" target="_blank" rel="noopener">UnixTime</a></li>
-            <li><a href="https://fillthispdf.othrys.be" target="_blank" rel="noopener">FillThisPDF</a></li>
-            <li><a href="https://mergepdf.othrys.be" target="_blank" rel="noopener">MergePDF</a></li>
-          </ul>
-        </div>
-        <div class="sitemap-col">
-          <h4>Trust &amp; Privacy</h4>
-          <ul>
-            <li>
-              <button type="button" id="cookie-status-pill" class="footer-tool-btn" title="Inspect zero-cookie status" aria-label="Cookie and Privacy Status">
-                <span class="dot-indicator" aria-hidden="true"></span>
-                <span data-i18n="cookieBadge">0 Cookies</span> (Audit)
-              </button>
-            </li>
-            <li>
-              <button type="button" id="vault-pill" class="footer-tool-btn" title="Client-Side Storage Vault" aria-label="Open Storage Vault">
-                <span data-i18n="navAccount">Vault</span> (Local Storage)
-              </button>
-            </li>
-            <li><a href="#privacy">Zero-Cloud Guarantee</a></li>
-            <li><a href="https://othrys.be/architecture" target="_blank" rel="noopener">Fleet Telemetry</a></li>
-            <li><a href="https://github.com/vtcbelgium/freeqr/blob/main/LICENSE" target="_blank" rel="noopener">MIT License</a></li>
-          </ul>
-        </div>
-        <div class="sitemap-col">
-          <h4>Network &amp; Source</h4>
-          <ul>
-            <li><a href="https://othrys.be" target="_blank" rel="noopener">OTHRYS Hub</a></li>
-            <li><a href="https://github.com/vtcbelgium/freeqr" target="_blank" rel="noopener">GitHub Repository</a></li>
-            <li><a href="/sitemap.xml">XML Sitemap</a></li>
-            <li><a href="/robots.txt">Robots.txt</a></li>
-          </ul>
-        </div>
+    <!-- Row 2: Full-Width 4-Column Sitemap Grid -->
+    <div class="footer-sitemap-grid">
+      <div class="sitemap-col">
+        <h4>Utility &amp; Guide</h4>
+        <ul>
+          <li><a href="#generator">QR Generator</a></li>
+          <li><a href="#how-it-works">How It Works</a></li>
+          <li><a href="#questions">FAQ &amp; Guide</a></li>
+          <li><button type="button" class="footer-link-btn" id="nav-about-btn" data-i18n="navAbout">About FreeQR</button></li>
+          <li><button type="button" class="footer-link-btn" id="nav-settings-btn" data-i18n="navSettings">Display &amp; Accessibility</button></li>
+        </ul>
+      </div>
+
+      <div class="sitemap-col">
+        <h4>Sovereign Fleet</h4>
+        <ul>
+          <li><a href="https://shrinkmyphoto.othrys.be" target="_blank" rel="noopener">ShrinkMyPhoto</a></li>
+          <li><a href="https://quickpercent.othrys.be" target="_blank" rel="noopener">QuickPercent</a></li>
+          <li><a href="https://unixtime.othrys.be" target="_blank" rel="noopener">UnixTime</a></li>
+          <li><a href="https://fillthispdf.othrys.be" target="_blank" rel="noopener">FillThisPDF</a></li>
+          <li><a href="https://mergepdf.othrys.be" target="_blank" rel="noopener">MergePDF</a></li>
+        </ul>
+      </div>
+
+      <div class="sitemap-col">
+        <h4>Trust &amp; Privacy</h4>
+        <ul>
+          <li>
+            <button type="button" id="cookie-status-pill" class="footer-tool-btn" title="Inspect zero-cookie status" aria-label="Cookie and Privacy Status">
+              <span class="dot-indicator" aria-hidden="true"></span>
+              <span data-i18n="cookieBadge">0 Cookies</span> (Audit)
+            </button>
+          </li>
+          <li>
+            <button type="button" id="vault-pill" class="footer-tool-btn" title="Client-Side Storage Vault" aria-label="Open Storage Vault">
+              <span data-i18n="navAccount">Vault</span> (Local Storage)
+            </button>
+          </li>
+          <li><a href="#privacy">Zero-Cloud Guarantee</a></li>
+          <li><a href="https://othrys.be/architecture" target="_blank" rel="noopener">Fleet Telemetry</a></li>
+          <li><a href="https://othrys.be/architecture" target="_blank" rel="noopener">Sovereign Architecture</a></li>
+        </ul>
+      </div>
+
+      <div class="sitemap-col">
+        <h4>Network &amp; Source</h4>
+        <ul>
+          <li><a href="https://othrys.be" target="_blank" rel="noopener">OTHRYS Hub</a></li>
+          <li><a href="https://github.com/vtcbelgium/freeqr" target="_blank" rel="noopener">GitHub Repository</a></li>
+          <li><a href="/sitemap.xml">XML Sitemap</a></li>
+          <li><a href="/robots.txt">Robots.txt</a></li>
+        </ul>
       </div>
     </div>
 
+    <!-- Row 3: Bottom Bar -->
     <div class="footer-bottom">
       <span data-i18n="footerRights">© 2026 OTHRYS. Built to be useful, private, and durable.</span>
       <span class="sovereign-tag">100% Client-Side · Zero Cookies · Zero Cloud Tracking</span>

@@ -37,7 +37,7 @@ describe('Sovereign Building Blocks in FreeQR', () => {
     expect(html).toContain('https://othrys.be/architecture');
   });
 
-  it('includes canonical Sovereign Footer with fleet back-link and MIT notice', () => {
+  it('includes canonical Sovereign Footer with fleet back-link and sovereign notice', () => {
     expect(html).toContain('class="site-footer"');
     expect(html).toContain('https://othrys.be');
     expect(html).toContain('https://othrys.be/architecture');
