@@ -33,6 +33,22 @@ self.addEventListener('fetch', (event) => {
   // Ignore external cross-origin analytics/APIs (which don't exist in FreeQR anyway)
   if (!event.request.url.startsWith(self.location.origin)) return;
 
+  // HTML / navigation requests: Network-first to prevent stale asset hashes after deploy
+  if (event.request.mode === 'navigate') {
+    event.respondWith(
+      fetch(event.request)
+        .then((networkResponse) => {
+          if (networkResponse && networkResponse.status === 200) {
+            const responseToCache = networkResponse.clone();
+            caches.open(CACHE_NAME).then((cache) => cache.put(event.request, responseToCache));
+          }
+          return networkResponse;
+        })
+        .catch(() => caches.match(event.request).then((cached) => cached || caches.match('/index.html')))
+    );
+    return;
+  }
+
   event.respondWith(
     caches.match(event.request).then((cachedResponse) => {
       if (cachedResponse) {

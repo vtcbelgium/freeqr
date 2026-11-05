@@ -83,8 +83,8 @@ export const DICTIONARY: Record<Locale, Translations> = {
     cookieBadge: 'Zero Cookies',
     cookieGuaranteeTitle: 'Zero-Cookie & Zero-Storage Guarantee',
     cookieGuaranteeText: 'FreeQR does not use cookies, trackers, or remote telemetry. No cookie banner is required because zero non-essential data is stored.',
-    aboutTitle: 'About FreeQR & OTHYS',
-    aboutText: 'FreeQR is an independent sovereign utility engineered by OTHYS. It runs 100% in your browser sandbox with zero cloud reliance.',
+    aboutTitle: 'About FreeQR & OTHRYS',
+    aboutText: 'FreeQR is an independent sovereign utility engineered by OTHRYS. It runs 100% in your browser sandbox with zero cloud reliance.',
     vaultTitle: 'Sovereign Client-Side Vault',
     vaultStorage: 'Browser Local Storage Used',
     vaultExport: 'Export Settings (JSON)',
@@ -97,7 +97,7 @@ export const DICTIONARY: Record<Locale, Translations> = {
     settingsThemeAuto: 'System Sync',
     settingsContrast: 'High Contrast Mode (WCAG AAA)',
     footerTagline: 'Permanent static QR codes with zero telemetry.',
-    footerRights: '© 2026 OTHYS. Built to be useful, private, and durable.'
+    footerRights: '© 2026 OTHRYS. Built to be useful, private, and durable.'
   },
   nl: {
     navGenerator: 'Generator',
@@ -131,8 +131,8 @@ export const DICTIONARY: Record<Locale, Translations> = {
     cookieBadge: 'Nul Cookies',
     cookieGuaranteeTitle: 'Nul-Cookie & Privacy Garantie',
     cookieGuaranteeText: 'FreeQR gebruikt geen cookies of tracking. Geen vervelende cookiebanner nodig conform ePrivacy en AVG.',
-    aboutTitle: 'Over FreeQR & OTHYS',
-    aboutText: 'FreeQR is een soeverein hulpprogramma van OTHYS. Draait 100% in uw browser zonder servers.',
+    aboutTitle: 'Over FreeQR & OTHRYS',
+    aboutText: 'FreeQR is een soeverein hulpprogramma van OTHRYS. Draait 100% in uw browser zonder servers.',
     vaultTitle: 'Lokale Soevereine Kluis',
     vaultStorage: 'Browseropslag in gebruik',
     vaultExport: 'Exporteer back-up (JSON)',
@@ -145,7 +145,7 @@ export const DICTIONARY: Record<Locale, Translations> = {
     settingsThemeAuto: 'Systeemvoorkeur',
     settingsContrast: 'Hoog contrast (WCAG AAA)',
     footerTagline: 'Permanente statische QR-codes zonder telemetrie.',
-    footerRights: '© 2026 OTHYS. Gebouwd om nuttig, privé en duurzaam te zijn.'
+    footerRights: '© 2026 OTHRYS. Gebouwd om nuttig, privé en duurzaam te zijn.'
   },
   fr: {
     navGenerator: 'Générateur',
@@ -179,8 +179,8 @@ export const DICTIONARY: Record<Locale, Translations> = {
     cookieBadge: 'Zéro Cookie',
     cookieGuaranteeTitle: 'Garantie Zéro Cookie & Souveraineté',
     cookieGuaranteeText: 'FreeQR n’utilise aucun cookie ni traceur. Aucune bannière requise selon le RGPD et la directive ePrivacy.',
-    aboutTitle: 'À propos de FreeQR & OTHYS',
-    aboutText: 'FreeQR est un utilitaire souverain développé par OTHYS. 100% exécuté dans votre navigateur.',
+    aboutTitle: 'À propos de FreeQR & OTHRYS',
+    aboutText: 'FreeQR est un utilitaire souverain développé par OTHRYS. 100% exécuté dans votre navigateur.',
     vaultTitle: 'Coffre Local Souverain',
     vaultStorage: 'Stockage local utilisé',
     vaultExport: 'Exporter sauvegarde (JSON)',
@@ -193,7 +193,7 @@ export const DICTIONARY: Record<Locale, Translations> = {
     settingsThemeAuto: 'Automatique',
     settingsContrast: 'Contraste élevé (WCAG AAA)',
     footerTagline: 'QR codes statiques permanents sans télémétrie.',
-    footerRights: '© 2026 OTHYS. Conçu pour être utile, privé et durable.'
+    footerRights: '© 2026 OTHRYS. Conçu pour être utile, privé et durable.'
   },
   de: {
     navGenerator: 'Generator',
@@ -227,8 +227,8 @@ export const DICTIONARY: Record<Locale, Translations> = {
     cookieBadge: 'Null Cookies',
     cookieGuaranteeTitle: 'Null-Cookie & Datenschutz-Garantie',
     cookieGuaranteeText: 'FreeQR nutzt weder Cookies noch Tracking. Keine lästigen Cookie-Banner gemäß DSGVO.',
-    aboutTitle: 'Über FreeQR & OTHYS',
-    aboutText: 'FreeQR ist ein souveränes Werkzeug von OTHYS, das zu 100% lokal im Browser läuft.',
+    aboutTitle: 'Über FreeQR & OTHRYS',
+    aboutText: 'FreeQR ist ein souveränes Werkzeug von OTHRYS, das zu 100% lokal im Browser läuft.',
     vaultTitle: 'Lokaler Tresor',
     vaultStorage: 'Lokaler Speicher belegt',
     vaultExport: 'Exportieren (JSON)',
@@ -241,7 +241,7 @@ export const DICTIONARY: Record<Locale, Translations> = {
     settingsThemeAuto: 'Systemstandard',
     settingsContrast: 'Hoher Kontrast (WCAG AAA)',
     footerTagline: 'Permanente statische QR-Codes ohne Telemetrie.',
-    footerRights: '© 2026 OTHYS. Nützlich, privat und langlebig.'
+    footerRights: '© 2026 OTHRYS. Nützlich, privat und langlebig.'
   },
   es: {
     navGenerator: 'Generador',
@@ -275,8 +275,8 @@ export const DICTIONARY: Record<Locale, Translations> = {
     cookieBadge: 'Cero Cookies',
     cookieGuaranteeTitle: 'Garantía Cero Cookies y Privacidad',
     cookieGuaranteeText: 'FreeQR no utiliza cookies ni rastreo. Sin banners molestos según el RGPD.',
-    aboutTitle: 'Acerca de FreeQR y OTHYS',
-    aboutText: 'FreeQR es una utilidad soberana de OTHYS que funciona 100% en el navegador.',
+    aboutTitle: 'Acerca de FreeQR y OTHRYS',
+    aboutText: 'FreeQR es una utilidad soberana de OTHRYS que funciona 100% en el navegador.',
     vaultTitle: 'Bóveda Local Soberana',
     vaultStorage: 'Almacenamiento local utilizado',
     vaultExport: 'Exportar respaldo (JSON)',
@@ -289,7 +289,7 @@ export const DICTIONARY: Record<Locale, Translations> = {
     settingsThemeAuto: 'Sincronizar sistema',
     settingsContrast: 'Alto contraste (WCAG AAA)',
     footerTagline: 'Códigos QR permanentes sin telemetría.',
-    footerRights: '© 2026 OTHYS. Construido para ser útil, privado y duradero.'
+    footerRights: '© 2026 OTHRYS. Construido para ser útil, privado y duradero.'
   }
 };
 

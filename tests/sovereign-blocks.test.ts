@@ -83,10 +83,10 @@ describe('Sovereign Building Blocks in FreeQR', () => {
     expect(html).toContain('id="contrast-toggle"');
   });
 
-  it('includes About modal with OTHYS provenance and client-side architecture', () => {
+  it('includes About modal with OTHRYS provenance and client-side architecture', () => {
     expect(html).toContain('id="nav-about-btn"');
     expect(html).toContain('id="about-dialog"');
-    expect(html).toContain('About FreeQR &amp; OTHYS');
+    expect(html).toContain('About FreeQR &amp; OTHRYS');
   });
 
   it('includes Human Sitemap in footer linking tools, fleet, trust, and network', () => {
