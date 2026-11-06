@@ -44,56 +44,61 @@
   </script>
 
   <script type="application/ld+json">
-  [
-    {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "FreeQR",
-      "url": "https://freeqr.othrys.be/",
-      "description": "Make free static QR codes for website links, text, Wi-Fi, email, SMS, phone, vCard, and location. Create and download PNG or SVG QR codes directly in your browser, without an account.",
-      "applicationCategory": "UtilitiesApplication",
-      "operatingSystem": "Any",
-      "isAccessibleForFree": true
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Static or dynamic. What’s the difference?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "A static QR code contains your content directly. A dynamic code usually points to a service that redirects visitors and may offer editing or tracking. FreeQR makes static codes, with no redirect service or subscription."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Will my QR code expire?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "The code itself has no built-in expiry. A website it links to can change or go offline, and Wi-Fi credentials can change. Test the downloaded code with your phone before printing or sharing."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Where does my information go?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "QR generation happens locally in your browser. FreeQR does not upload or store your entries, use analytics, or track scans. Opening a link from a code contacts that destination as usual."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Which file should I download?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "PNG is handy for everyday sharing. SVG stays sharp at any size and is ideal for print. Keep the white border, use good contrast, and test at the final size with your intended devices."
-          }
-        }
-      ]
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "FreeQR",
+    "url": "https://freeqr.othrys.be/",
+    "description": "Make free static QR codes for website links, text, Wi-Fi, email, SMS, phone, vCard, and location. Create and download PNG or SVG QR codes directly in your browser, without an account.",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "isAccessibleForFree": true,
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "EUR"
     }
-  ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Static or dynamic. What’s the difference?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A static QR code contains your content directly. A dynamic code usually points to a service that redirects visitors and may offer editing or tracking. FreeQR makes static codes, with no redirect service or subscription."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Will my QR code expire?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The code itself has no built-in expiry. A website it links to can change or go offline, and Wi-Fi credentials can change. Test the downloaded code with your phone before printing or sharing."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Where does my information go?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "QR generation happens locally in your browser. FreeQR does not upload or store your entries, use analytics, or track scans. Opening a link from a code contacts that destination as usual."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Which file should I download?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PNG is handy for everyday sharing. SVG stays sharp at any size and is ideal for print. Keep the white border, use good contrast, and test at the final size with your intended devices."
+        }
+      }
+    ]
+  }
   </script>
 </head>
 <body>
