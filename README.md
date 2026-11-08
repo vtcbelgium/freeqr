@@ -39,7 +39,8 @@ The custom domain is `https://freeqr.othrys.be/`. What the repository ships for 
 - Robots meta: `index, follow`.
 - A `WebApplication` JSON-LD block with `url` `https://freeqr.othrys.be/`.
 - `public/robots.txt` allows all crawlers (`User-agent: *`, `Allow: /`) and points to `Sitemap: https://freeqr.othrys.be/sitemap.xml`.
-- `public/sitemap.xml` lists one URL, `https://freeqr.othrys.be/`, with no `lastmod`.
+- `public/sitemap.xml` lists the home page and the `https://freeqr.othrys.be/types/` hub. The individual type pages are listed in `public/sitemap-types.xml`.
+- `public/types/` holds the hub page and the type pages, each with `BreadcrumbList` JSON-LD. `types/` is a byte-identical mirror; change both together.
 
 There is no external social image. Files in `public/` are copied to the root of `dist/` unchanged. If the domain changes, update the canonical, `og:url`, JSON-LD `url`, the `robots.txt` sitemap line and the sitemap `loc` together. These files do not show whether the site is indexed; check that in Search Console.
 
