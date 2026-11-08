@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Free QR Code Widget | FreeQR</title>
+  <meta name="robots" content="noindex, follow">
+  <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: system-ui, -apple-system, sans-serif; }
+    body { background: #0b1120; color: #f8fafc; padding: 16px; display: flex; flex-direction: column; align-items: center; gap: 12px; }
+    .card { background: #1e293b; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 16px; width: 100%; max-width: 380px; display: flex; flex-direction: column; align-items: center; gap: 12px; }
+    input { width: 100%; background: #0f172a; border: 1px solid rgba(255,255,255,0.15); border-radius: 6px; padding: 10px 12px; color: #fff; font-size: 14px; }
+    input:focus { outline: none; border-color: #38bdf8; }
+    canvas { background: #fff; padding: 10px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
+    .btn { background: #38bdf8; color: #0f172a; border: none; border-radius: 6px; padding: 8px 16px; font-weight: 600; cursor: pointer; text-decoration: none; font-size: 13px; }
+    .btn:hover { background: #7dd3fc; }
+    .footer { font-size: 11px; color: #94a3b8; }
+    .footer a { color: #94a3b8; text-decoration: none; font-weight: 600; }
+    .footer a:hover { color: #38bdf8; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <input type="text" id="qr-input" placeholder="Type URL or text..." value="https://othrys.be">
+    <canvas id="qr-canvas"></canvas>
+    <a id="dl-btn" class="btn" download="qrcode.png">Download PNG</a>
+  </div>
+  <div class="footer">
+    <a href="https://freeqr.othrys.be/" target="_blank" rel="noopener">⚡ Powered by FreeQR</a> • Zero Redirects
+  </div>
+  <script>
+    const canvas = document.getElementById('qr-canvas');
+    const input = document.getElementById('qr-input');
+    const dlBtn = document.getElementById('dl-btn');
+    function gen() {
+      const val = input.value.trim() || 'https://freeqr.othrys.be';
+      if (window.QRCode) {
+        QRCode.toCanvas(canvas, val, { width: 180, margin: 1, color: { dark: '#000000', light: '#ffffff' } }, function() {
+          dlBtn.href = canvas.toDataURL('image/png');
+        });
+      }
+    }
+    input.addEventListener('input', gen);
+    window.addEventListener('load', gen);
+    setTimeout(gen, 500);
+  </script>
+</body>
+</html>
