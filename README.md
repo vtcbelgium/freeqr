@@ -1,5 +1,26 @@
 # FreeQR
 
+[![Live Site](https://img.shields.io/badge/Live_Tool-freeqr.othrys.be-0284c7?style=flat-square)](https://freeqr.othrys.be)
+[![Privacy](https://img.shields.io/badge/Privacy-100%25_Client--Side-16a34a?style=flat-square)](https://freeqr.othrys.be)
+[![Cookies](https://img.shields.io/badge/Cookies-0-blue?style=flat-square)](https://freeqr.othrys.be)
+[![WCAG AA](https://img.shields.io/badge/Accessibility-WCAG_AA-blueviolet?style=flat-square)](https://freeqr.othrys.be)
+[![License: MIT](https://img.shields.io/badge/License-MIT-gray?style=flat-square)](LICENSE)
+
+> Fast, private, client-side permanent static QR code generator with zero redirects. Runs 100% in your browser with zero server uploads, zero cookies, and zero tracking.
+
+## Features
+- **100% Client-Side:** Files and confidential data never leave your device.
+- **Zero Cookies & Zero Trackers:** Closed-valve privacy architecture with 0 third-party telemetry scripts.
+- **Keyboard Spotlight:** Jump to any of the 20 sovereign tools anytime by pressing <kbd>⌘K</kbd> or <kbd>Ctrl+K</kbd>.
+- **PWA Ready:** Works offline on laptops, MacBooks, tablets, and mobile devices.
+
+## Direct Web Access
+Use the live tool instantly without installing anything:
+[https://freeqr.othrys.be](https://freeqr.othrys.be)
+
+
+# FreeQR
+
 A standalone, static QR generator built with Vite, vanilla TypeScript, semantic HTML and custom responsive CSS. QR encoding uses the locally bundled `qrcode` library. No backend, hosted QR service, accounts, analytics, tracking, external fonts or runtime API calls.
 
 ## Run
