@@ -76,8 +76,8 @@ describe('/types/ hub page', () => {
       expect(anchor?.[1], slug).toMatch(/QR Code/);
     }
   });
-  it('stays static with zero scripts, cookies or third-party resources', () => {
-    expect(hub.replace(/<script type="application\/ld\+json">.*?<\/script>/s, '')).not.toMatch(/<script|<iframe|cookie/i);
+  it('stays static with zero unapproved scripts, cookies or third-party resources', () => {
+    expect(hub.replace(/<script type="application\/ld\+json">.*?<\/script>|<script src="\/stats\.js" defer><\/script>/gs, '')).not.toMatch(/<script|<iframe|cookie/i);
     expect(hub).not.toMatch(/(?:src|href)="https?:\/\/(?!freeqr\.othrys\.be\/)/);
   });
   it('is linked from the home page footer', () => {

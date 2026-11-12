@@ -82,7 +82,7 @@ export const DICTIONARY: Record<Locale, Translations> = {
     statusCopied: 'Payload copied to clipboard.',
     cookieBadge: 'Zero Cookies',
     cookieGuaranteeTitle: 'Zero-Cookie & Zero-Storage Guarantee',
-    cookieGuaranteeText: 'FreeQR does not use cookies, trackers, or remote telemetry. No cookie banner is required because zero non-essential data is stored.',
+    cookieGuaranteeText: 'FreeQR does not use cookies or third-party trackers; only anonymous, cookieless page-view counts (stats.othrys.be, no IP stored, respecting Do Not Track / GPC, 90-day expiry) run. No cookie banner is required because zero non-essential data is stored.',
     aboutTitle: 'About FreeQR & OTHRYS',
     aboutText: 'FreeQR is an independent sovereign utility engineered by OTHRYS. It runs 100% in your browser sandbox with zero cloud reliance.',
     vaultTitle: 'Sovereign Client-Side Vault',
@@ -96,7 +96,7 @@ export const DICTIONARY: Record<Locale, Translations> = {
     settingsThemeOled: 'OLED Pure Black (#000000)',
     settingsThemeAuto: 'System Sync',
     settingsContrast: 'High Contrast Mode (WCAG AAA)',
-    footerTagline: 'Permanent static QR codes with zero telemetry.',
+    footerTagline: 'Permanent static QR codes with zero cookies or third-party tracking.',
     footerRights: '© 2026 OTHRYS. Built to be useful, private, and durable.'
   },
   nl: {
@@ -130,7 +130,7 @@ export const DICTIONARY: Record<Locale, Translations> = {
     statusCopied: 'Inhoud gekopieerd naar klembord.',
     cookieBadge: 'Nul Cookies',
     cookieGuaranteeTitle: 'Nul-Cookie & Privacy Garantie',
-    cookieGuaranteeText: 'FreeQR gebruikt geen cookies of tracking. Geen vervelende cookiebanner nodig conform ePrivacy en AVG.',
+    cookieGuaranteeText: 'FreeQR gebruikt geen cookies of tracking van derden. Alleen anonieme paginatellingen zonder cookies of IP (Do Not Track / GPC gerespecteerd, 90 dagen bewaard). Geen cookiebanner nodig conform ePrivacy en AVG.',
     aboutTitle: 'Over FreeQR & OTHRYS',
     aboutText: 'FreeQR is een soeverein hulpprogramma van OTHRYS. Draait 100% in uw browser zonder servers.',
     vaultTitle: 'Lokale Soevereine Kluis',
@@ -144,7 +144,7 @@ export const DICTIONARY: Record<Locale, Translations> = {
     settingsThemeOled: 'OLED Puur Zwart (#000000)',
     settingsThemeAuto: 'Systeemvoorkeur',
     settingsContrast: 'Hoog contrast (WCAG AAA)',
-    footerTagline: 'Permanente statische QR-codes zonder telemetrie.',
+    footerTagline: 'Permanente statische QR-codes zonder cookies of tracking van derden.',
     footerRights: '© 2026 OTHRYS. Gebouwd om nuttig, privé en duurzaam te zijn.'
   },
   fr: {
@@ -178,7 +178,7 @@ export const DICTIONARY: Record<Locale, Translations> = {
     statusCopied: 'Contenu copié dans le presse-papiers.',
     cookieBadge: 'Zéro Cookie',
     cookieGuaranteeTitle: 'Garantie Zéro Cookie & Souveraineté',
-    cookieGuaranteeText: 'FreeQR n’utilise aucun cookie ni traceur. Aucune bannière requise selon le RGPD et la directive ePrivacy.',
+    cookieGuaranteeText: 'FreeQR n’utilise aucun cookie ni traceur tiers ; seul un comptage anonyme des pages vues sans cookies ni IP (Do Not Track / GPC respecté, 90 jours) est effectué. Aucune bannière requise.',
     aboutTitle: 'À propos de FreeQR & OTHRYS',
     aboutText: 'FreeQR est un utilitaire souverain développé par OTHRYS. 100% exécuté dans votre navigateur.',
     vaultTitle: 'Coffre Local Souverain',
@@ -192,7 +192,7 @@ export const DICTIONARY: Record<Locale, Translations> = {
     settingsThemeOled: 'Noir pur OLED (#000000)',
     settingsThemeAuto: 'Automatique',
     settingsContrast: 'Contraste élevé (WCAG AAA)',
-    footerTagline: 'QR codes statiques permanents sans télémétrie.',
+    footerTagline: 'QR codes statiques permanents sans cookies ni suivi tiers.',
     footerRights: '© 2026 OTHRYS. Conçu pour être utile, privé et durable.'
   },
   de: {
@@ -226,7 +226,7 @@ export const DICTIONARY: Record<Locale, Translations> = {
     statusCopied: 'In die Zwischenablage kopiert.',
     cookieBadge: 'Null Cookies',
     cookieGuaranteeTitle: 'Null-Cookie & Datenschutz-Garantie',
-    cookieGuaranteeText: 'FreeQR nutzt weder Cookies noch Tracking. Keine lästigen Cookie-Banner gemäß DSGVO.',
+    cookieGuaranteeText: 'FreeQR nutzt weder Cookies noch Tracking durch Dritte; nur anonyme Seitenaufrufe ohne Cookies oder IP-Speicherung (Do Not Track / GPC, 90 Tage). Keine Cookie-Banner gemäß DSGVO.',
     aboutTitle: 'Über FreeQR & OTHRYS',
     aboutText: 'FreeQR ist ein souveränes Werkzeug von OTHRYS, das zu 100% lokal im Browser läuft.',
     vaultTitle: 'Lokaler Tresor',
@@ -240,7 +240,7 @@ export const DICTIONARY: Record<Locale, Translations> = {
     settingsThemeOled: 'OLED Tiefschwarz (#000000)',
     settingsThemeAuto: 'Systemstandard',
     settingsContrast: 'Hoher Kontrast (WCAG AAA)',
-    footerTagline: 'Permanente statische QR-Codes ohne Telemetrie.',
+    footerTagline: 'Permanente statische QR-Codes ohne Cookies oder Drittanbieter-Tracking.',
     footerRights: '© 2026 OTHRYS. Nützlich, privat und langlebig.'
   },
   es: {
@@ -274,7 +274,7 @@ export const DICTIONARY: Record<Locale, Translations> = {
     statusCopied: 'Contenido copiado al portapapeles.',
     cookieBadge: 'Cero Cookies',
     cookieGuaranteeTitle: 'Garantía Cero Cookies y Privacidad',
-    cookieGuaranteeText: 'FreeQR no utiliza cookies ni rastreo. Sin banners molestos según el RGPD.',
+    cookieGuaranteeText: 'FreeQR no utiliza cookies ni rastreo de terceros; solo recuenta visitas anónimas sin cookies ni IP (Do Not Track / GPC respetado, 90 días). Sin banners molestos según el RGPD.',
     aboutTitle: 'Acerca de FreeQR y OTHRYS',
     aboutText: 'FreeQR es una utilidad soberana de OTHRYS que funciona 100% en el navegador.',
     vaultTitle: 'Bóveda Local Soberana',
@@ -288,7 +288,7 @@ export const DICTIONARY: Record<Locale, Translations> = {
     settingsThemeOled: 'Negro puro OLED (#000000)',
     settingsThemeAuto: 'Sincronizar sistema',
     settingsContrast: 'Alto contraste (WCAG AAA)',
-    footerTagline: 'Códigos QR permanentes sin telemetría.',
+    footerTagline: 'Códigos QR permanentes sin cookies ni rastreo de terceros.',
     footerRights: '© 2026 OTHRYS. Construido para ser útil, privado y duradero.'
   }
 };

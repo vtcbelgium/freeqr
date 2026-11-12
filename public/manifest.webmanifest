@@ -1,7 +1,7 @@
 {
   "name": "FreeQR — Sovereign QR Code Generator",
   "short_name": "FreeQR",
-  "description": "Make free static QR codes for links, text, and Wi-Fi. 100% client-side, zero cloud tracking.",
+  "description": "Make free static QR codes for links, text, and Wi-Fi. 100% client-side, zero cookies.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",

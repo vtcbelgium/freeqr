@@ -6,7 +6,7 @@
   "name": "FreeQR",
   "title": "Free QR Code Generator for Links, Text & Wi-Fi",
   "domain": "freeqr.othrys.be",
-  "thesis": "Ultra-fast, distraction-free, 100% client-side static QR code generator for links, text, and Wi-Fi networks with zero cloud telemetry and zero cookies.",
+  "thesis": "Ultra-fast, distraction-free, 100% client-side static QR code generator for links, text, and Wi-Fi networks with zero third-party tracking and zero cookies.",
   "single_job": "Generate and download pristine static QR codes (PNG & SVG) instantly in browser.",
   "runtime": {
     "type": "spa-edge",
@@ -67,10 +67,10 @@
   "constraints": {
     "zero_cloud_upload": true,
     "zero_cookies": true,
-    "zero_analytics_trackers": true,
+    "cookieless_first_party_stats": "https://stats.othrys.be/hit",
     "zero_third_party_fonts": true,
     "offline_first": true,
-    "strict_csp": "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; connect-src 'self' https://othrys.be; object-src 'none';"
+    "strict_csp": "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; connect-src 'self' https://othrys.be https://stats.othrys.be; object-src 'none';"
   },
   "export_formats": ["png", "svg"],
   "qr_types_supported": ["text", "url", "wifi"]

@@ -31,7 +31,7 @@ describe('Sovereign Building Blocks in FreeQR', () => {
   it('includes Sovereign Legal & Privacy Guarantee section', () => {
     expect(html).toContain('id="privacy"');
     expect(html).toContain('class="privacy-section"');
-    expect(html).toContain('Zero Cloud Uploads. Zero Tracking. 100% Private.');
+    expect(html).toContain('Zero Cloud Uploads. Zero Cookies. 100% Private.');
     expect(html).toContain('Zero Server Storage');
     expect(html).toContain('Open &amp; Verifiable');
     expect(html).toContain('https://othrys.be/architecture');
@@ -41,7 +41,7 @@ describe('Sovereign Building Blocks in FreeQR', () => {
     expect(html).toContain('class="site-footer"');
     expect(html).toContain('https://othrys.be');
     expect(html).toContain('https://othrys.be/architecture');
-    expect(html).toContain('100% Client-Side · Zero Cookies · Zero Cloud Tracking');
+    expect(html).toContain('100% Client-Side · Zero Cookies · Zero Cloud Storage');
   });
 
   it('includes structured FAQPage schema in JSON-LD', () => {
