@@ -5,7 +5,7 @@
 [![Cookies](https://img.shields.io/badge/Cookies-0-blue?style=flat-square)](https://freeqr.othrys.be)
 [![WCAG AA](https://img.shields.io/badge/Accessibility-WCAG_AA-blueviolet?style=flat-square)](https://freeqr.othrys.be)
 
-> Fast, private, client-side permanent static QR code generator with zero redirects. Runs 100% in your browser with zero server uploads, zero cookies, and zero tracking.
+> Fast, private, client-side permanent static QR code generator with zero redirects. Runs 100% in your browser with zero server uploads, zero cookies, and zero third-party tracking.
 
 ## Features
 - **100% Client-Side:** Files and confidential data never leave your device.
@@ -20,7 +20,7 @@ Use the live tool instantly without installing anything:
 
 # FreeQR
 
-A standalone, static QR generator built with Vite, vanilla TypeScript, semantic HTML and custom responsive CSS. QR encoding uses the locally bundled `qrcode` library. No backend, hosted QR service, accounts, analytics, tracking, external fonts or runtime API calls.
+A standalone, static QR generator built with Vite, vanilla TypeScript, semantic HTML and custom responsive CSS. QR encoding uses the locally bundled `qrcode` library. No backend, hosted QR service, accounts, third-party tracking, external fonts or runtime API calls (uses only cookieless first-party page-view counts via stats.othrys.be honoring DNT/GPC, 90-day expiry).
 
 ## Run
 
