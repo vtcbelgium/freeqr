@@ -59,7 +59,7 @@ describe('Sovereign Building Blocks in FreeQR', () => {
     expect(html).toContain('id="cookie-dialog"');
     expect(html).toContain('Cookie and Storage Transparency');
     expect(html).toContain('Cookies and Statistics Choices');
-    expect(html).toContain('only after you accept optional statistics');
+    expect(html).toContain('Only after you accept optional statistics');
     expect(html).toContain('2002/58/EC');
     expect(html).toContain('EU ePrivacy Directive 2002/58/EC Article 5(3)');
   });
