@@ -3,6 +3,7 @@ import { describe, expect, it } from 'vitest';
 
 const read = (path: string) => readFileSync(new URL(`../${path}`, import.meta.url), 'utf8');
 const html = read('index.html');
+const localeCopy = read('src/i18n.ts');
 
 describe('Sovereign Building Blocks in FreeQR', () => {
   it('includes accessible skip link targeting main generator', () => {
@@ -28,10 +29,13 @@ describe('Sovereign Building Blocks in FreeQR', () => {
     expect(html).toContain('03');
   });
 
-  it('includes Sovereign Legal & Privacy Guarantee section', () => {
+  it('includes an accurate privacy and opt-in choices section', () => {
     expect(html).toContain('id="privacy"');
     expect(html).toContain('class="privacy-section"');
-    expect(html).toContain('Zero Cloud Uploads. Zero Cookies. 100% Private.');
+    expect(html).toContain('QR inputs stay local. Optional statistics require consent.');
+    expect(html).toContain('EU ePrivacy Directive 2002/58/EC Article 5(3)');
+    expect(html).not.toContain('GDPR Article 5(3)');
+    expect(html).not.toContain('No cookie banner is required');
     expect(html).toContain('Zero Server Storage');
     expect(html).toContain('Open &amp; Verifiable');
     expect(html).toContain('https://othrys.be/architecture');
@@ -41,7 +45,7 @@ describe('Sovereign Building Blocks in FreeQR', () => {
     expect(html).toContain('class="site-footer"');
     expect(html).toContain('https://othrys.be');
     expect(html).toContain('https://othrys.be/architecture');
-    expect(html).toContain('100% Client-Side · Zero Cookies · Zero Cloud Storage');
+    expect(html).toContain('Local QR Generation · No Analytics Cookies · Optional Statistics');
   });
 
   it('includes structured FAQPage schema in JSON-LD', () => {
@@ -50,12 +54,23 @@ describe('Sovereign Building Blocks in FreeQR', () => {
     expect(html).toContain('Where does my information go?');
   });
 
-  it('includes Zero-Cookie guarantee pill, inspector dialog, and legal basis', () => {
+  it('includes cookie and statistics choices, inspector dialog, and correct ePrivacy reference', () => {
     expect(html).toContain('id="cookie-status-pill"');
     expect(html).toContain('id="cookie-dialog"');
-    expect(html).toContain('Zero-Cookie &amp; Zero-Storage Guarantee');
+    expect(html).toContain('Cookie and Storage Transparency');
+    expect(html).toContain('Cookies and Statistics Choices');
+    expect(html).toContain('only after you accept optional statistics');
     expect(html).toContain('2002/58/EC');
-    expect(html).toContain('GDPR Article 5(3)');
+    expect(html).toContain('EU ePrivacy Directive 2002/58/EC Article 5(3)');
+  });
+
+  it('keeps five language privacy statements truthful about optional stats', () => {
+    expect(localeCopy).not.toContain('No cookie banner is required');
+    expect(localeCopy).not.toContain('Aucune bannière requise');
+    expect(localeCopy).not.toContain('Keine Cookie-Banner');
+    expect(localeCopy).not.toContain('anonieme paginatellingen');
+    expect(localeCopy).toContain('Optional pseudonymous pageview statistics are sent only after you accept');
+    expect(localeCopy).toContain('Optionele pseudonieme paginastatistieken');
   });
 
   it('includes Language (i18n) switcher and alternate hreflang tags', () => {
