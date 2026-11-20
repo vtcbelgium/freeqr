@@ -2,8 +2,11 @@
   Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
+  Content-Security-Policy: frame-ancestors 'self'
 
 /embed/*
+  ! Content-Security-Policy
+  Content-Security-Policy: frame-ancestors *
   Access-Control-Allow-Origin: *
 
 /assets/*
