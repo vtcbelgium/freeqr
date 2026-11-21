@@ -1,0 +1,7 @@
+Name: FreeQR
+URL: https://freeqr.othrys.be/
+Description: Generate permanent, static QR codes for links, Wi-Fi, text, and vCards with zero redirects, entirely in the browser.
+LLMs-Txt: https://freeqr.othrys.be/llms.txt
+Sitemap: https://freeqr.othrys.be/sitemap.xml
+Protocol: public-read-only
+Privacy: zero-tracking-cookies, local-browser-execution, zero-cloud-uploads
