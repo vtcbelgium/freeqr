@@ -150,12 +150,12 @@
         <div class="workspace-tabs" role="tablist" aria-label="FreeQR Studio Mode">
           <button type="button" role="tab" id="tab-create" aria-selected="true" class="workspace-tab active" data-workspace="create">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"></rect><rect x="14" y="3" width="7" height="7" rx="1.5"></rect><rect x="14" y="14" width="7" height="7" rx="1.5"></rect><rect x="3" y="14" width="7" height="7" rx="1.5"></rect></svg>
-            <span>Create QR Code</span>
+            <span data-i18n="tabCreate">Create QR Code</span>
           </button>
           <button type="button" role="tab" id="tab-scan" aria-selected="false" class="workspace-tab" data-workspace="scan">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7V4h3"></path><path d="M17 4h3v3"></path><path d="M20 17v3h-3"></path><path d="M7 20H4v-3"></path><line x1="4" y1="12" x2="20" y2="12"></line></svg>
-            <span>Scan / Read QR</span>
-            <span class="pill-badge-new">REVERSE</span>
+            <span data-i18n="tabScan">Scan / Read QR</span>
+            <span class="pill-badge-new" data-i18n="badgeReverse">REVERSE</span>
           </button>
         </div>
       </div>
@@ -165,10 +165,10 @@
     <section class="generator" id="generator" aria-label="QR code generator">
       <div class="editor">
         <div class="step">
-          <span>01 / ENTER CONTENT</span>
-          <span class="step-badge">LOCAL GENERATION</span>
+          <span data-i18n="stepEnterContent">01 / ENTER CONTENT</span>
+          <span class="step-badge" data-i18n="badgeLocalGen">LOCAL GENERATION</span>
         </div>
-        <h2>Create your QR code</h2>
+        <h2 data-i18n="createHeading">Create your QR code</h2>
         
         <form id="qr-form" novalidate>
           <!-- Silicon Valley Style Mode Switcher Tab Bar -->
@@ -179,23 +179,23 @@
               <input type="radio" name="mode" value="url" checked>
               <span class="mode-label">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
-                <span>URL</span>
+                <span data-i18n="modeUrl">URL</span>
               </span>
             </label>
 
             <label class="mode-tab" title="Plain Text">
               <input type="radio" name="mode" value="text">
-              <span class="mode-label" data-i18n="modeText">
+              <span class="mode-label">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 7 4 4 20 4 20 7"></polyline><line x1="9" y1="20" x2="15" y2="20"></line><line x1="12" y1="4" x2="12" y2="20"></line></svg>
-                <span>Text</span>
+                <span data-i18n="modeText">Text</span>
               </span>
             </label>
 
             <label class="mode-tab" title="Wi-Fi Network Credentials">
               <input type="radio" name="mode" value="wifi">
-              <span class="mode-label" data-i18n="modeWifi">
+              <span class="mode-label">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"></path><path d="M1.42 9a16 16 0 0 1 21.16 0"></path><path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path><line x1="12" y1="20" x2="12.01" y2="20"></line></svg>
-                <span>Wi-Fi</span>
+                <span data-i18n="modeWifi">Wi-Fi</span>
               </span>
             </label>
 
@@ -203,7 +203,7 @@
               <input type="radio" name="mode" value="email">
               <span class="mode-label">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                <span>Email</span>
+                <span data-i18n="modeEmail">Email</span>
               </span>
             </label>
 
@@ -211,7 +211,7 @@
               <input type="radio" name="mode" value="phone">
               <span class="mode-label">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-                <span>Phone</span>
+                <span data-i18n="modePhone">Phone</span>
               </span>
             </label>
 
@@ -219,7 +219,7 @@
               <input type="radio" name="mode" value="sms">
               <span class="mode-label">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
-                <span>SMS</span>
+                <span data-i18n="modeSms">SMS</span>
               </span>
             </label>
 
@@ -227,7 +227,7 @@
               <input type="radio" name="mode" value="vcard">
               <span class="mode-label">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-                <span>vCard</span>
+                <span data-i18n="modeVcard">vCard</span>
               </span>
             </label>
 
@@ -235,16 +235,16 @@
               <input type="radio" name="mode" value="location">
               <span class="mode-label">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                <span>Location</span>
+                <span data-i18n="modeLocation">Location</span>
               </span>
             </label>
           </fieldset>
 
           <!-- MODE 1: URL -->
           <div id="url-fields">
-            <label for="input-url">Website URL or Link</label>
+            <label for="input-url" data-i18n="labelUrl">Website URL or Link</label>
             <input id="input-url" type="url" placeholder="https://your-next-great-idea.com" autocomplete="off" aria-describedby="url-help error">
-            <p class="help" id="url-help">Enter any website link. Phone cameras open this URL with a single tap.</p>
+            <p class="help" id="url-help" data-i18n="helpUrl">Enter any website link. Phone cameras open this URL with a single tap.</p>
           </div>
 
           <!-- MODE 2: PLAIN TEXT -->
@@ -276,27 +276,27 @@
 
           <!-- MODE 4: EMAIL -->
           <div id="email-fields" hidden>
-            <label for="input-email-to">Recipient Email Address</label>
+            <label for="input-email-to" data-i18n="labelEmailTo">Recipient Email Address</label>
             <input id="input-email-to" type="email" placeholder="hello@company.com" autocomplete="off">
-            <label for="input-email-subject">Subject (optional)</label>
+            <label for="input-email-subject" data-i18n="labelEmailSubject">Subject (optional)</label>
             <input id="input-email-subject" type="text" placeholder="Inquiry about..." autocomplete="off">
-            <label for="input-email-body">Pre-filled Message (optional)</label>
+            <label for="input-email-body" data-i18n="labelEmailBody">Pre-filled Message (optional)</label>
             <textarea id="input-email-body" rows="3" placeholder="Write your message here..."></textarea>
             <p class="help">Scanners launch default mail client with recipient, subject, and body prefilled.</p>
           </div>
 
           <!-- MODE 5: PHONE -->
           <div id="phone-fields" hidden>
-            <label for="input-phone-num">Phone Number</label>
+            <label for="input-phone-num" data-i18n="labelPhoneNum">Phone Number</label>
             <input id="input-phone-num" type="tel" placeholder="+32 470 12 34 56" autocomplete="off">
             <p class="help">Scanning initiates a direct dial call on iOS and Android phones.</p>
           </div>
 
           <!-- MODE 6: SMS -->
           <div id="sms-fields" hidden>
-            <label for="input-sms-num">Mobile Number</label>
+            <label for="input-sms-num" data-i18n="labelSmsNum">Mobile Number</label>
             <input id="input-sms-num" type="tel" placeholder="+1 (555) 019-2834" autocomplete="off">
-            <label for="input-sms-msg">Pre-filled SMS Text (optional)</label>
+            <label for="input-sms-msg" data-i18n="labelSmsMsg">Pre-filled SMS Text (optional)</label>
             <textarea id="input-sms-msg" rows="3" placeholder="Hello, I would like to reserve..."></textarea>
             <p class="help">Scanners launch the messaging app with number and draft text ready to send.</p>
           </div>
@@ -305,31 +305,31 @@
           <div id="vcard-fields" hidden>
             <div class="input-grid-2">
               <div>
-                <label for="vcard-first">First Name</label>
+                <label for="vcard-first" data-i18n="labelVcardFirst">First Name</label>
                 <input id="vcard-first" type="text" placeholder="Ada">
               </div>
               <div>
-                <label for="vcard-last">Last Name</label>
+                <label for="vcard-last" data-i18n="labelVcardLast">Last Name</label>
                 <input id="vcard-last" type="text" placeholder="Lovelace">
               </div>
             </div>
             <div class="input-grid-2">
               <div>
-                <label for="vcard-org">Organization / Company</label>
+                <label for="vcard-org" data-i18n="labelVcardOrg">Organization / Company</label>
                 <input id="vcard-org" type="text" placeholder="Foundry Ltd">
               </div>
               <div>
-                <label for="vcard-phone">Mobile Phone</label>
+                <label for="vcard-phone" data-i18n="labelVcardPhone">Mobile Phone</label>
                 <input id="vcard-phone" type="tel" placeholder="+1 555 0192">
               </div>
             </div>
             <div class="input-grid-2">
               <div>
-                <label for="vcard-email">Work Email</label>
+                <label for="vcard-email" data-i18n="labelVcardEmail">Work Email</label>
                 <input id="vcard-email" type="email" placeholder="ada@foundry.com">
               </div>
               <div>
-                <label for="vcard-url">Website</label>
+                <label for="vcard-url" data-i18n="labelVcardUrl">Website</label>
                 <input id="vcard-url" type="url" placeholder="https://foundry.com">
               </div>
             </div>
@@ -340,22 +340,22 @@
           <div id="location-fields" hidden>
             <div class="input-grid-2">
               <div>
-                <label for="geo-lat">Latitude</label>
+                <label for="geo-lat" data-i18n="labelGeoLat">Latitude</label>
                 <input id="geo-lat" type="text" placeholder="50.8503">
               </div>
               <div>
-                <label for="geo-lng">Longitude</label>
+                <label for="geo-lng" data-i18n="labelGeoLng">Longitude</label>
                 <input id="geo-lng" type="text" placeholder="4.3517">
               </div>
             </div>
             <div class="geo-presets">
-              <span class="geo-presets-label">Quick Presets:</span>
+              <span class="geo-presets-label" data-i18n="labelQuickPresets">Quick Presets:</span>
               <button type="button" class="geo-pill" data-lat="50.8503" data-lng="4.3517">Brussels</button>
               <button type="button" class="geo-pill" data-lat="51.5074" data-lng="-0.1278">London</button>
               <button type="button" class="geo-pill" data-lat="40.7128" data-lng="-74.0060">New York</button>
               <button type="button" class="geo-pill" data-lat="35.6762" data-lng="139.6503">Tokyo</button>
             </div>
-            <p class="help">Opens Google Maps or Apple Maps directly at specified geographic coordinates.</p>
+            <p class="help" data-i18n="helpGeo">Opens Google Maps or Apple Maps directly at specified geographic coordinates.</p>
           </div>
 
           <!-- DESIGN & STYLING CUSTOMIZER ACCORDION -->
@@ -363,14 +363,14 @@
             <summary class="customizer-summary">
               <span class="summary-left">
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="m4.93 4.93 4.24 4.24"></path><path d="m14.83 9.17 4.24-4.24"></path><path d="m14.83 14.83 4.24 4.24"></path><path d="m9.17 14.83-4.24 4.24"></path><circle cx="12" cy="12" r="4"></circle></svg>
-                <span>Design, Center Logo &amp; Resolution</span>
+                <span data-i18n="customizerTitle">Design, Center Logo &amp; Resolution</span>
               </span>
-              <span class="summary-tag">Studio Controls</span>
+              <span class="summary-tag" data-i18n="customizerTag">Studio Controls</span>
             </summary>
             <div class="customizer-body">
               <!-- Color Control -->
               <div class="customizer-row">
-                <label>Foreground Color</label>
+                <label data-i18n="labelFgColor">Foreground Color</label>
                 <div class="color-palette">
                   <button type="button" class="color-swatch active" data-color="#000000" style="background: #000000;" title="Jet Black"></button>
                   <button type="button" class="color-swatch" data-color="#0f172a" style="background: #0f172a;" title="Slate Navy"></button>
@@ -379,16 +379,16 @@
                   <button type="button" class="color-swatch" data-color="#6b21a8" style="background: #6b21a8;" title="Deep Purple"></button>
                   <label class="custom-color-label" title="Custom Hex Color">
                     <input type="color" id="qr-color-input" value="#000000">
-                    <span>Custom</span>
+                    <span data-i18n="labelCustomColor">Custom</span>
                   </label>
                 </div>
               </div>
 
               <!-- Center Logo / Icon Badge Overlay -->
               <div class="customizer-row">
-                <label>Center Logo / Icon Overlay</label>
+                <label data-i18n="labelCenterLogo">Center Logo / Icon Overlay</label>
                 <div class="icon-preset-bar">
-                  <button type="button" class="icon-preset-pill active" data-icon="none">None</button>
+                  <button type="button" class="icon-preset-pill active" data-icon="none" data-i18n="labelLogoNone">None</button>
                   <button type="button" class="icon-preset-pill" data-icon="link" title="Link Icon">🔗 Link</button>
                   <button type="button" class="icon-preset-pill" data-icon="wifi" title="Wi-Fi Icon">📶 Wi-Fi</button>
                   <button type="button" class="icon-preset-pill" data-icon="email" title="Email Icon">✉️ Email</button>
@@ -398,15 +398,15 @@
                   <button type="button" class="icon-preset-pill" data-icon="star" title="Star Icon">⭐ Star</button>
                   <label class="icon-upload-label" title="Upload custom logo PNG/SVG">
                     <input type="file" id="logo-file-input" accept="image/png,image/jpeg,image/svg+xml" class="sr-only">
-                    <span>Upload Logo ⇪</span>
+                    <span data-i18n="labelUploadLogo">Upload Logo ⇪</span>
                   </label>
                 </div>
-                <p class="customizer-hint">Adding an icon automatically elevates error recovery to High (30%) so your QR scans reliably.</p>
+                <p class="customizer-hint" data-i18n="customizerHint">Adding an icon automatically elevates error recovery to High (30%) so your QR scans reliably.</p>
               </div>
 
               <!-- Frame / Caption Template -->
               <div class="customizer-row">
-                <label for="frame-template-select">Print Frame &amp; Caption</label>
+                <label for="frame-template-select" data-i18n="labelPrintFrame">Print Frame &amp; Caption</label>
                 <div class="frame-row">
                   <select id="frame-template-select">
                     <option value="" selected>No Frame (Standard Code)</option>
@@ -420,7 +420,7 @@
 
               <!-- Resolution Selector -->
               <div class="customizer-row">
-                <label for="qr-resolution-select">Export Resolution</label>
+                <label for="qr-resolution-select" data-i18n="labelExportRes">Export Resolution</label>
                 <select id="qr-resolution-select">
                   <option value="1024" selected>1024 × 1024 px (Standard · Digital &amp; Web)</option>
                   <option value="2048">2048 × 2048 px (Print HD · Flyers &amp; Menus)</option>
@@ -430,7 +430,7 @@
 
               <!-- Error Correction -->
               <div class="customizer-row">
-                <label for="qr-ecc-select">Error Correction (Redundancy Level)</label>
+                <label for="qr-ecc-select" data-i18n="labelEcc">Error Correction (Redundancy Level)</label>
                 <select id="qr-ecc-select">
                   <option value="M" selected>Medium (~15% recovery · Standard)</option>
                   <option value="L">Low (~7% recovery · Densest)</option>
@@ -444,7 +444,7 @@
           <p id="error" class="error" role="alert"></p>
           
           <div class="editor-bottom">
-            <span class="live-status"><span class="pulse-dot"></span> Updates as you type</span>
+            <span class="live-status"><span class="pulse-dot"></span> <span data-i18n="liveUpdates">Updates as you type</span></span>
             <button id="clear" type="button" class="text-button"><span data-i18n="btnClear">Clear</span> <span aria-hidden="true">↺</span></button>
           </div>
         </form>
@@ -452,8 +452,8 @@
 
       <div class="preview-panel">
         <div class="step">
-          <span>02 / PREVIEW &amp; DOWNLOAD</span>
-          <span id="badge" class="step-badge">LIVE CANVAS</span>
+          <span data-i18n="stepPreviewDownload">02 / PREVIEW &amp; DOWNLOAD</span>
+          <span id="badge" class="step-badge" data-i18n="badgeLiveCanvas">LIVE CANVAS</span>
         </div>
         <div class="qr-stage" id="qr-stage">
           <img id="qr-image" alt="Generated QR code" hidden>
@@ -468,23 +468,23 @@
                 <line x1="17" y1="7" x2="17" y2="7.01"></line>
               </svg>
             </div>
-            <p>Your QR preview will appear here.</p>
-            <span class="empty-sub">Type content above to generate instantly</span>
+            <p data-i18n="previewEmptyTitle">Your QR preview will appear here.</p>
+            <span class="empty-sub" data-i18n="previewEmptySub">Type content above to generate instantly</span>
           </div>
         </div>
-        <p id="status" role="status" aria-live="polite">Add some content to see your QR code.</p>
+        <p id="status" role="status" aria-live="polite" data-i18n="statusEmpty">Add some content to see your QR code.</p>
         
         <!-- Primary Action Download Group -->
         <div class="downloads">
           <button type="button" id="png" disabled><span data-i18n="btnPng">Download PNG</span> <span aria-hidden="true">↓</span></button>
           <button type="button" id="svg" disabled><span data-i18n="btnSvg">SVG</span> <span aria-hidden="true">↓</span></button>
-          <button type="button" id="copy-image" class="copy-image-btn" disabled title="Copy PNG image directly to clipboard for Figma, Canva, or Slack">Copy Image 📋</button>
+          <button type="button" id="copy-image" class="copy-image-btn" disabled title="Copy PNG image directly to clipboard for Figma, Canva, or Slack"><span data-i18n="btnCopyImage">Copy Image</span> <span aria-hidden="true">📋</span></button>
         </div>
 
         <!-- Secondary Actions -->
         <div class="preview-secondary-actions">
           <button type="button" id="copy" class="copy" disabled data-i18n="btnCopy">Copy payload</button>
-          <button type="button" id="print-btn" class="print-btn" disabled title="Print QR Code directly">Print 🖨️</button>
+          <button type="button" id="print-btn" class="print-btn" disabled title="Print QR Code directly"><span data-i18n="btnPrint">Print</span> <span aria-hidden="true">🖨️</span></button>
         </div>
         <p class="export-note" id="export-note-text">PNG · 1024 px &nbsp;/&nbsp; SVG · scalable vector</p>
 
@@ -505,11 +505,11 @@
     <section class="scanner-section" id="scanner-section" hidden aria-label="QR code scanner and reader">
       <div class="scanner-container">
         <div class="step">
-          <span>01 / UPLOAD OR PASTE QR CODE</span>
-          <span class="step-badge">100% IN-BROWSER DECODER</span>
+          <span data-i18n="stepUploadQr">01 / UPLOAD OR PASTE QR CODE</span>
+          <span class="step-badge" data-i18n="badgeInBrowserDecoder">100% IN-BROWSER DECODER</span>
         </div>
-        <h2>Scan &amp; Decode Any QR Code</h2>
-        <p class="scanner-desc">Drop any screenshot, flyer image, or photo of a QR code to read its content instantly on your desktop or laptop. Decoded entirely inside your browser sandbox.</p>
+        <h2 data-i18n="scannerHeading">Scan &amp; Decode Any QR Code</h2>
+        <p class="scanner-desc" data-i18n="scannerDesc">Drop any screenshot, flyer image, or photo of a QR code to read its content instantly on your desktop or laptop. Decoded entirely inside your browser sandbox.</p>
         
         <div class="scanner-dropzone" id="scanner-dropzone" tabindex="0" role="button" aria-label="Drop QR image here or click to browse">
           <div class="dropzone-content">
@@ -522,8 +522,8 @@
                 <line x1="4" y1="12" x2="20" y2="12"></line>
               </svg>
             </div>
-            <p class="dropzone-main-text"><strong>Drag &amp; drop a QR image</strong> or <span class="browse-link">browse files</span></p>
-            <p class="dropzone-hint">Supports PNG, JPG, WEBP, or SVG · or paste directly with Ctrl+V / ⌘+V</p>
+            <p class="dropzone-main-text"><strong data-i18n="scannerDropMain">Drag &amp; drop a QR image or browse files</strong></p>
+            <p class="dropzone-hint" data-i18n="scannerDropHint">Supports PNG, JPG, WEBP, or SVG · or paste directly with Ctrl+V / ⌘+V</p>
           </div>
           <input type="file" id="scanner-file-input" accept="image/*" class="sr-only">
         </div>
@@ -535,14 +535,14 @@
             <span class="result-verified">✓ Decoded Locally (0 Network Requests)</span>
           </div>
           <div class="result-body">
-            <label for="scanner-result-payload">Decoded Content:</label>
+            <label for="scanner-result-payload" data-i18n="scannerDecodedLabel">Decoded Content:</label>
             <textarea id="scanner-result-payload" readonly rows="3"></textarea>
           </div>
           <div class="result-actions">
-            <a id="scanner-open-url" href="#" target="_blank" rel="noopener noreferrer" class="btn-primary" hidden>Open Link ↗</a>
-            <button type="button" id="scanner-copy-btn" class="btn-secondary">Copy Content 📋</button>
-            <button type="button" id="scanner-load-generator" class="btn-secondary">Load into Generator ↻</button>
-            <button type="button" id="scanner-clear-btn" class="text-button">Scan Another Image</button>
+            <a id="scanner-open-url" href="#" target="_blank" rel="noopener noreferrer" class="btn-primary" hidden data-i18n="btnOpenLink">Open Link ↗</a>
+            <button type="button" id="scanner-copy-btn" class="btn-secondary"><span data-i18n="btnCopyContent">Copy Content</span> <span aria-hidden="true">📋</span></button>
+            <button type="button" id="scanner-load-generator" class="btn-secondary" data-i18n="btnLoadGenerator">Load into Generator ↻</button>
+            <button type="button" id="scanner-clear-btn" class="text-button" data-i18n="btnScanAnother">Scan Another Image</button>
           </div>
         </div>
         <p id="scanner-error" class="error" role="alert"></p>
@@ -926,7 +926,7 @@ if ('serviceWorker' in navigator) {
 <aside id="othrys-cluster-mesh" aria-label="Related Workflow Tools in Media, Assets & Vectors" style="max-width:960px;margin:24px auto;padding:12px 16px;font:13px/1.5 system-ui,sans-serif;text-align:center;opacity:0.85;border-top:1px solid rgba(128,128,128,0.2);"><strong>Media, Assets & Vectors Cluster</strong> &bull; Related Client-Side Tools: <a href="https://favicon.othrys.be/" style="color:inherit;text-decoration:underline;">FaviconGen</a> &bull; <a href="https://shrinkmyphoto.othrys.be/" style="color:inherit;text-decoration:underline;">ShrinkMyPhoto</a> &bull; <a href="https://webptopng.othrys.be/" style="color:inherit;text-decoration:underline;">WebPtoPNG</a></aside>
 
 <!-- OTHRYS Contextual Next Tool Recommendation -->
-<div class="othrys-next-recommendation" style="margin:28px auto;max-width:760px;padding:12px 18px;background:#1e293b;border:1px solid rgba(255,255,255,0.12);border-radius:10px;display:flex;align-items:center;justify-content:space-between;gap:12px;font-family:system-ui,-apple-system,sans-serif;font-size:13px;">
+<div class="othrys-next-recommendation" style="margin:28px auto;max-width:760px;padding:12px 18px;background:#1e293b;border:1px solid rgba(255,255,255,0.12);border-radius:10px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;font-family:system-ui,-apple-system,sans-serif;font-size:13px;">
   <div style="display:flex;align-items:center;gap:10px;">
     <span style="font-weight:700;color:#38bdf8;text-transform:uppercase;font-size:11px;letter-spacing:0.5px;">Recommended Next Step:</span>
     <span style="color:#cbd5e1;">Compress photo or marketing assets to target KB limits without server uploads</span>
